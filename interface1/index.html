@@ -9,15 +9,8 @@
     <!-- Font Awesome voor iconen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Basis donker thema */
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        
-        /* Held sectie */
-        .held {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             height: 70vh;
@@ -28,64 +21,51 @@
             text-align: center;
         }
         
-        /* Kaart en container stijlen */
-        .kaart {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 10px;
-        }
-        
-        .mapje {
+        .map-container {
             height: 400px;
             width: 100%;
             border-radius: 10px;
-        }
-        
-        /* Kleding kaarten */
-        .kledingkaart {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s;
-            margin-bottom: 20px;
         }
         
-        .kledingkaart:hover {
-            transform: translateY(-5px);
+        .clothing-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        .kledingkaart img {
+        .clothing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .clothing-card img {
             height: 250px;
-            width: 100%;
             object-fit: cover;
+            width: 100%;
         }
         
-        /* Duurzaamheid sectie */
-        .duurzaam {
-            background-color: #1a1a1a;
+        .sustainability-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
-            border-top: 3px solid #333;
-            border-bottom: 3px solid #333;
+            border-top: 5px solid #dee2e6;
+            border-bottom: 5px solid #dee2e6;
         }
         
-        /* Contact formulier */
-        .contactdoos {
-            background-color: #1e1e1e;
-            border-radius: 10px;
+        .contact-form-container {
+            background-color: #f8f9fa;
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        /* Titel stijl */
-        .titel {
+        .section-title {
             position: relative;
             padding-bottom: 15px;
             margin-bottom: 30px;
-            color: #e0e0e0;
         }
         
-        .titel:after {
+        .section-title:after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -94,173 +74,108 @@
             margin: 0 auto;
             width: 100px;
             height: 3px;
-            background: #7a56d4;
+            background: #6c757d;
         }
         
-        /* Navigatie stijl */
-        .navigatie {
-            background-color: #1a1a1a !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        .nav-item {
+            margin: 0 5px;
         }
         
-        .logo {
+        .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            color: #7a56d4 !important;
         }
         
-        /* Footer stijl */
-        .voeter {
-            background-color: #0a0a0a;
-            border-top: 3px solid #333;
+        footer {
+            background: #212529;
+            border-top: 5px solid #343a40;
         }
         
-        /* Sociale media iconen */
-        .socials a {
+        .social-icons a {
             margin-right: 15px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
             display: inline-block;
-            color: #7a56d4 !important;
         }
         
-        .socials a:hover {
+        .social-icons a:hover {
             transform: scale(1.2);
         }
         
-        /* Carousel/slider stijl */
-        .slider img {
+        .carousel-item img {
             height: 400px;
             object-fit: cover;
         }
         
-        /* Knoppen stijl */
-        .paarsknop {
-            background-color: #7a56d4 !important;
-            border-color: #7a56d4 !important;
-            color: white !important;
+        .btn-primary {
+            background-color: #5c6bc0;
+            border-color: #5c6bc0;
         }
         
-        .paarsknop:hover {
-            background-color: #6644b8 !important;
-            border-color: #6644b8 !important;
+        .btn-primary:hover {
+            background-color: #3f51b5;
+            border-color: #3f51b5;
         }
         
-        /* Kenmerken vakjes */
-        .kenmerk {
+        .feature-box {
             padding: 20px;
             text-align: center;
-            background-color: #1e1e1e;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             height: 100%;
         }
         
-        .icongrote {
+        .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #7a56d4;
+            color: #5c6bc0;
         }
         
-        /* Form validatie styling */
-        .form-control {
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            color: #e0e0e0;
+        /* Form validation styling */
+        .form-control.is-invalid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
         }
         
-        .form-control:focus {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-            border-color: #7a56d4;
-            box-shadow: 0 0 0 0.25rem rgba(122, 86, 212, 0.25);
+        .form-control.is-valid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
         }
         
-        .form-control.is-invalid {
-            border-color: #dc3545;
-            background-color: #2a2a2a;
+        .form-feedback-icon {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            z-index: 2;
         }
         
-        .form-control.is-valid {
-            border-color: #198754;
-            background-color: #2a2a2a;
-        }
-        
-        .form-label {
-            color: #e0e0e0;
-        }
-        
-        .accordion-button {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-        }
-        
-        .accordion-button:not(.collapsed) {
-            background-color: #7a56d4;
-            color: white;
-        }
-        
-        .accordion-body {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-        }
-        
-        .list-group-item {
-            background-color: transparent;
-            color: #e0e0e0;
-            border-color: #444;
-        }
-        
-        /* Form elements dark theme */
-        .input-group-text {
-            background-color: #7a56d4;
-            color: white;
-            border-color: #7a56d4;
-        }
-        
-        .form-check-input {
-            background-color: #2a2a2a;
-            border-color: #444;
-        }
-        
-        .form-check-input:checked {
-            background-color: #7a56d4;
-            border-color: #7a56d4;
-        }
-        
-        /* Text colors */
-        .paars-tekst {
-            color: #7a56d4;
-        }
-        
-        .licht-tekst {
-            color: #e0e0e0;
+        .input-group-with-validation {
+            position: relative;
         }
     </style>
 </head>
 <body>
     <!-- Navigatiebalk -->
-    <nav class="navbar navbar-expand-lg navbar-dark navigatie sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand logo" href="#">BugBoetiek</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <a class="navbar-brand text-primary" href="#">BugBoetiek</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navMenu">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#opendag">Opening</a>
+                        <a class="nav-link" href="#opening">Opening</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#kleren">Kleding</a>
+                        <a class="nav-link" href="#kleding">Kleding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#milieu">Duurzaamheid</a>
+                        <a class="nav-link" href="#duurzaamheid">Duurzaamheid</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#vraag">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -268,12 +183,12 @@
     </nav>
 
     <!-- Hero Sectie -->
-    <section class="held">
+    <section class="hero-section">
         <div class="container">
             <h1 class="display-2 fw-bold mb-4">BugBoetiek</h1>
             <p class="lead fs-3 mb-4">De nieuwste hotspot voor hippe kleding in Rotterdam</p>
             <p class="h3 mb-4">Feestelijke opening op 08-08-2024</p>
-            <a href="#opendag" class="btn paarsknop btn-lg px-5 py-3 rounded-pill">Meer informatie</a>
+            <a href="#opening" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow">Meer informatie</a>
         </div>
     </section>
 
@@ -282,22 +197,22 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="kenmerk">
-                        <i class="fas fa-tshirt icongrote"></i>
+                    <div class="feature-box">
+                        <i class="fas fa-tshirt feature-icon"></i>
                         <h4>Exclusieve Collecties</h4>
                         <p>Unieke stukken die je nergens anders vindt met regelmatig nieuwe items.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kenmerk">
-                        <i class="fas fa-leaf icongrote"></i>
+                    <div class="feature-box">
+                        <i class="fas fa-leaf feature-icon"></i>
                         <h4>Duurzame Mode</h4>
                         <p>Milieubewuste keuzes en eerlijke productie voor een betere toekomst.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kenmerk">
-                        <i class="fas fa-users icongrote"></i>
+                    <div class="feature-box">
+                        <i class="fas fa-users feature-icon"></i>
                         <h4>Community Events</h4>
                         <p>Word deel van onze bruisende mode-gemeenschap met regelmatige evenementen.</p>
                     </div>
@@ -307,22 +222,22 @@
     </section>
 
     <!-- Opening Info -->
-    <section id="opendag" class="py-5" style="background-color: #191919;">
+    <section id="opening" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center titel fw-bold">Feestelijke Opening</h2>
+            <h2 class="text-center section-title fw-bold">Feestelijke Opening</h2>
             <div class="row align-items-center">
                 <div class="col-md-6 order-md-2">
                     <h3 class="fw-bold mb-4">08-08-2024 van 17:00 tot 23:00</h3>
                     <ul class="list-unstyled">
-                        <li class="mb-3"><i class="fas fa-music me-2 paars-tekst"></i> Live DJ en muziekoptredens</li>
-                        <li class="mb-3"><i class="fas fa-cocktail me-2 paars-tekst"></i> Cocktailbar met speciale openingsaanbiedingen</li>
-                        <li class="mb-3"><i class="fas fa-tag me-2 paars-tekst"></i> Exclusieve kortingen alleen tijdens de opening</li>
-                        <li><i class="fas fa-gift me-2 paars-tekst"></i> Gratis cap voor de eerste 100 bezoekers!</li>
+                        <li class="mb-3"><i class="fas fa-music me-2 text-primary"></i> Live DJ en muziekoptredens</li>
+                        <li class="mb-3"><i class="fas fa-cocktail me-2 text-primary"></i> Cocktailbar met speciale openingsaanbiedingen</li>
+                        <li class="mb-3"><i class="fas fa-tag me-2 text-primary"></i> Exclusieve kortingen alleen tijdens de opening</li>
+                        <li><i class="fas fa-gift me-2 text-primary"></i> Gratis cap voor de eerste 100 bezoekers!</li>
                     </ul>
                     <p class="mt-4 lead">Kom langs en ontdek onze unieke collectie van de nieuwste streetwear en designer kleding.</p>
                 </div>
                 <div class="col-md-6 order-md-1 mb-5 mb-md-0">
-                    <div id="plaatjes" class="carousel slide" data-bs-ride="carousel">
+                    <div id="openingCarousel" class="carousel slide shadow" data-bs-ride="carousel">
                         <div class="carousel-inner rounded-4">
                             <div class="carousel-item active">
                                 <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Hippe kleding">
@@ -334,10 +249,10 @@
                                 <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Schoenen collectie">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#plaatjes" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#openingCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#plaatjes" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#openingCarousel" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
@@ -349,23 +264,25 @@
     <!-- Locatie Sectie -->
     <section class="py-5">
         <div class="container">
-            <h2 class="text-center titel fw-bold">Onze Locatie</h2>
+            <h2 class="text-center section-title fw-bold">Onze Locatie</h2>
             <div class="row g-5">
                 <div class="col-md-6 order-md-2">
-                    <div class="mapje">
+                    <div class="map-container shadow">
                         <!-- Google Maps iframe -->
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.888950554012!2d4.477722315787716!3d51.9238663797007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335e57b9c4c1%3A0x513adf59f4a1d3a4!2sKruiskade%2088%2C%203011%20EH%20Rotterdam!5e0!3m2!1snl!2snl!4v1689685214763!5m2!1snl!2snl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="col-md-6 order-md-1">
-                    <div class="kaart h-100 p-4">
-                        <h3 class="fw-bold mb-4">Kruiskade 88, Rotterdam</h3>
-                        <p class="lead mb-4">Onze nieuwe winkel ligt in het bruisende hart van Rotterdam, omgeven door andere modezaken en horeca.</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item ps-0"><i class="fas fa-clock me-2 paars-tekst"></i> <strong>Openingsdagen:</strong> Dinsdag t/m Zondag</li>
-                            <li class="list-group-item ps-0"><i class="fas fa-calendar-alt me-2 paars-tekst"></i> <strong>Openingstijden:</strong> 10:00 - 18:00 (op donderdag tot 21:00)</li>
-                            <li class="list-group-item ps-0"><i class="fas fa-bus me-2 paars-tekst"></i> <strong>Bereikbaarheid:</strong> Goed bereikbaar met OV en parkeergarage op 5 minuten loopafstand</li>
-                        </ul>
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-4">Kruiskade 88, Rotterdam</h3>
+                            <p class="lead mb-4">Onze nieuwe winkel ligt in het bruisende hart van Rotterdam, omgeven door andere modezaken en horeca.</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item ps-0 border-0"><i class="fas fa-clock me-2 text-primary"></i> <strong>Openingsdagen:</strong> Dinsdag t/m Zondag</li>
+                                <li class="list-group-item ps-0 border-0"><i class="fas fa-calendar-alt me-2 text-primary"></i> <strong>Openingstijden:</strong> 10:00 - 18:00 (op donderdag tot 21:00)</li>
+                                <li class="list-group-item ps-0 border-0"><i class="fas fa-bus me-2 text-primary"></i> <strong>Bereikbaarheid:</strong> Goed bereikbaar met OV en parkeergarage op 5 minuten loopafstand</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -373,12 +290,12 @@
     </section>
 
     <!-- Kleding Sectie -->
-    <section id="kleren" class="py-5" style="background-color: #191919;">
+    <section id="kleding" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center titel fw-bold">Onze Collectie</h2>
+            <h2 class="text-center section-title fw-bold">Onze Collectie</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="clothing-card h-100">
                         <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Streetwear">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Streetwear</h5>
@@ -387,7 +304,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="clothing-card h-100">
                         <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Designer kleding">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Designer Kleding</h5>
@@ -396,7 +313,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="clothing-card h-100">
                         <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Accessoires">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Accessoires</h5>
@@ -408,22 +325,24 @@
             
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="kaart p-4">
-                        <h5 class="card-title fw-bold mb-4">Wat vind je bij BugBoetiek?</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Heren- en dameskleding</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Streetwear en high fashion</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Schoenen en accessoires</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Limited edition items</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Secondhand designer stukken</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Persoonlijk stijladvies</li>
-                                </ul>
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-4">Wat vind je bij BugBoetiek?</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Heren- en dameskleding</li>
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Streetwear en high fashion</li>
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Schoenen en accessoires</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Limited edition items</li>
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Secondhand designer stukken</li>
+                                        <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 text-success"></i> Persoonlijk stijladvies</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -433,34 +352,36 @@
     </section>
 
     <!-- Duurzaamheid Sectie -->
-    <section id="milieu" class="duurzaam">
+    <section id="duurzaamheid" class="sustainability-section">
         <div class="container">
-            <h2 class="text-center titel fw-bold">Duurzaamheid & Community</h2>
+            <h2 class="text-center section-title fw-bold">Duurzaamheid & Community</h2>
             <div class="row g-4">
                 <div class="col-lg-5">
-                    <img src="https://images.unsplash.com/photo-1531951634190-7e55e0c89851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded-4 mb-4" alt="Duurzaamheid">
-                    <div class="kaart p-4">
-                        <h5 class="fw-bold">Onze Visie</h5>
-                        <p>Bij BugBoetiek geloven we dat mode en duurzaamheid hand in hand kunnen gaan. We streven naar een circulair model waar kleding langer meegaat en minder impact heeft op het milieu.</p>
-                        <p>Onze community is belangrijk voor ons. Samen kunnen we de mode-industrie veranderen naar een meer duurzame en eerlijke sector.</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <i class="fas fa-users fa-2x me-3 paars-tekst"></i>
-                            <div>
-                                <h6 class="fw-bold">Word lid van onze community</h6>
-                                <p class="mb-0">Meld je aan voor exclusieve ruilevenementen en duurzaamheidsinitiatieven.</p>
+                    <img src="https://images.unsplash.com/photo-1531951634190-7e55e0c89851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded-4 shadow mb-4" alt="Duurzaamheid">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold">Onze Visie</h5>
+                            <p class="card-text">Bij BugBoetiek geloven we dat mode en duurzaamheid hand in hand kunnen gaan. We streven naar een circulair model waar kleding langer meegaat en minder impact heeft op het milieu.</p>
+                            <p>Onze community is belangrijk voor ons. Samen kunnen we de mode-industrie veranderen naar een meer duurzame en eerlijke sector.</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <i class="fas fa-users fa-2x me-3 text-primary"></i>
+                                <div>
+                                    <h6 class="fw-bold">Word lid van onze community</h6>
+                                    <p class="mb-0">Meld je aan voor exclusieve ruilevenementen en duurzaamheidsinitiatieven.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="accordion" id="milieuBox">
-                        <div class="accordion-item mb-3">
+                    <div class="accordion" id="sustainabilityAccordion">
+                        <div class="accordion-item border mb-3 shadow-sm">
                             <h2 class="accordion-header">
-                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel1">
-                                    <i class="fas fa-leaf me-2 paars-tekst"></i> Onze Klimaatdoelen
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <i class="fas fa-leaf me-2 text-success"></i> Onze Klimaatdoelen
                                 </button>
                             </h2>
-                            <div id="deel1" class="accordion-collapse collapse show" data-bs-parent="#milieuBox">
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#sustainabilityAccordion">
                                 <div class="accordion-body">
                                     <p>Bij BugBoetiek nemen we onze verantwoordelijkheid voor het milieu serieus. We streven naar:</p>
                                     <ul>
@@ -472,26 +393,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item border mb-3 shadow-sm">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel2">
-                                    <i class="fas fa-tshirt me-2 paars-tekst"></i> Kledingruil Programma
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <i class="fas fa-tshirt me-2 text-info"></i> Kledingruil Programma
                                 </button>
                             </h2>
-                            <div id="deel2" class="accordion-collapse collapse" data-bs-parent="#milieuBox">
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#sustainabilityAccordion">
                                 <div class="accordion-body">
                                     <p>Word lid van onze kledingruil community! Breng je hoogwaardige kleding die je niet meer draagt en ruil het voor iets nieuws (voor jou).</p>
                                     <p>Elke eerste zondag van de maand organiseren we een speciale ruilevenement in de winkel.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item border shadow-sm">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel3">
-                                    <i class="fas fa-recycle me-2 paars-tekst"></i> Reparatie Service
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <i class="fas fa-recycle me-2 text-primary"></i> Reparatie Service
                                 </button>
                             </h2>
-                            <div id="deel3" class="accordion-collapse collapse" data-bs-parent="#milieuBox">
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#sustainabilityAccordion">
                                 <div class="accordion-body">
                                     <p>In plaats van weg te gooien, repareren we het! Onze professionele naaisters kunnen kleine reparaties uitvoeren aan je favoriete kledingstukken.</p>
                                     <p>Kleine reparaties (zoals losse knopen of kleine scheurtjes) doen we gratis voor onze trouwe klanten.</p>
@@ -505,18 +426,18 @@
     </section>
 
     <!-- Contact Sectie -->
-    <section id="vraag" class="py-5">
+    <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="text-center titel fw-bold">Contact</h2>
+            <h2 class="text-center section-title fw-bold">Contact</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="contactdoos">
+                    <div class="contact-form-container">
                         <h4 class="mb-4 fw-bold text-center">Stel je vraag</h4>
-                        <form id="vraagForm" class="form-check" novalidate>
+                        <form id="contactForm" class="needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3 position-relative">
-                                    <label for="vnaam" class="form-label">Voornaam *</label>
-                                    <input type="text" class="form-control" id="vnaam" required>
+                                    <label for="firstName" class="form-label">Voornaam *</label>
+                                    <input type="text" class="form-control" id="firstName" required>
                                     <div class="valid-feedback">
                                         Ziet er goed uit!
                                     </div>
@@ -525,8 +446,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 position-relative">
-                                    <label for="anaam" class="form-label">Achternaam *</label>
-                                    <input type="text" class="form-control" id="anaam" required>
+                                    <label for="lastName" class="form-label">Achternaam *</label>
+                                    <input type="text" class="form-control" id="lastName" required>
                                     <div class="valid-feedback">
                                         Ziet er goed uit!
                                     </div>
@@ -537,10 +458,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3 position-relative">
-                                    <label for="mail" class="form-label">E-mailadres *</label>
+                                    <label for="email" class="form-label">E-mailadres *</label>
                                     <div class="input-group has-validation">
-                                        <span class="input-group-text" id="mailPrefix">@</span>
-                                        <input type="email" class="form-control" id="mail" required>
+                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                        <input type="email" class="form-control" id="email" aria-describedby="inputGroupPrepend" required>
                                         <div class="valid-feedback">
                                             Ziet er goed uit!
                                         </div>
@@ -550,8 +471,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 position-relative">
-                                    <label for="tel" class="form-label">Telefoonnummer *</label>
-                                    <input type="tel" class="form-control" id="tel" pattern="[0-9]{10}" required>
+                                    <label for="phone" class="form-label">Telefoonnummer *</label>
+                                    <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
                                     <div class="valid-feedback">
                                         Ziet er goed uit!
                                     </div>
@@ -561,13 +482,13 @@
                                 </div>
                             </div>
                             <div class="mb-3 position-relative">
-                                <label for="adres" class="form-label">Adres</label>
-                                <input type="text" class="form-control" id="adres">
+                                <label for="address" class="form-label">Adres</label>
+                                <input type="text" class="form-control" id="address">
                             </div>
                             <div class="row">
                                 <div class="col-md-4 mb-3 position-relative">
-                                    <label for="pcode" class="form-label">Postcode</label>
-                                    <input type="text" class="form-control" id="pcode" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
+                                    <label for="postalCode" class="form-label">Postcode</label>
+                                    <input type="text" class="form-control" id="postalCode" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
                                     <div class="valid-feedback">
                                         Ziet er goed uit!
                                     </div>
@@ -576,13 +497,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 mb-3 position-relative">
-                                    <label for="plaats" class="form-label">Woonplaats</label>
-                                    <input type="text" class="form-control" id="plaats">
+                                    <label for="city" class="form-label">Woonplaats</label>
+                                    <input type="text" class="form-control" id="city">
                                 </div>
                             </div>
                             <div class="mb-3 position-relative">
-                                <label for="bericht" class="form-label">Vraag *</label>
-                                <textarea class="form-control" id="bericht" rows="4" required></textarea>
+                                <label for="question" class="form-label">Vraag *</label>
+                                <textarea class="form-control" id="question" rows="4" required></textarea>
                                 <div class="valid-feedback">
                                     Ziet er goed uit!
                                 </div>
@@ -592,8 +513,8 @@
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="voorwaarden" required>
-                                    <label class="form-check-label" for="voorwaarden">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
                                         Ik ga akkoord met de algemene voorwaarden *
                                     </label>
                                     <div class="invalid-feedback">
@@ -602,8 +523,8 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="submit" class="btn paarsknop px-4">Verzenden</button>
-                                <button type="reset" class="btn btn-outline-secondary" id="wissen">Wissen</button>
+                                <button type="submit" class="btn btn-primary px-4">Verzenden</button>
+                                <button type="reset" class="btn btn-outline-secondary" id="resetForm">Wissen</button>
                             </div>
                         </form>
                     </div>
@@ -613,7 +534,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="voeter text-white py-5">
+    <footer class="text-white py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
@@ -631,11 +552,11 @@
                 </div>
                 <div class="col-md-4">
                     <h5 class="fw-bold mb-3">Volg ons</h5>
-                    <div class="socials">
-                        <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-tiktok fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-pinterest fa-2x"></i></a>
+                    <div class="social-icons">
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-tiktok fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-pinterest fa-2x"></i></a>
                     </div>
                 </div>
             </div>
@@ -651,30 +572,33 @@
     <script>
         // Formulier validatie met Bootstrap 5
         document.addEventListener('DOMContentLoaded', function () {
-            // Haal form op
-            var form = document.getElementById('vraagForm');
+            // Haal alle forms op die we willen valideren
+            var forms = document.querySelectorAll('.needs-validation');
             
-            // Submit event
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                } else {
-                    // Toon een succes melding als het formulier geldig is
-                    event.preventDefault();
-                    alert('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
-                    form.reset();
-                    form.classList.remove('was-validated');
-                }
-                
-                form.classList.add('was-validated');
-            }, false);
+            // Loop over alle forms en voorkom verzending
+            Array.from(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        // Toon een succes melding als het formulier geldig is
+                        event.preventDefault();
+                        alert('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    }
+                    
+                    form.classList.add('was-validated');
+                }, false);
+            });
             
-            // Reset knop
-            document.getElementById('wissen').addEventListener('click', function() {
+            // Reset knop: verwijder validatiestatus
+            document.getElementById('resetForm').addEventListener('click', function() {
+                var form = document.getElementById('contactForm');
                 form.classList.remove('was-validated');
                 
-                // Reset alle input velden
+                // Reset ook alle input velden visueel
                 var inputs = form.querySelectorAll('input, textarea');
                 inputs.forEach(function(input) {
                     input.classList.remove('is-invalid');
@@ -683,11 +607,11 @@
             });
         });
         
-        // Telefoonnummer check
-        document.getElementById('tel').addEventListener('input', function (e) {
+        // Telefoonnummer validatie
+        document.getElementById('phone').addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/[^\d]/g, '');
             
-            // Visuele feedback
+            // Visuele feedback tijdens het typen
             if (e.target.value.length > 0 && e.target.value.length !== 10) {
                 e.target.classList.add('is-invalid');
                 e.target.classList.remove('is-valid');
@@ -700,8 +624,8 @@
             }
         });
         
-        // Email check
-        document.getElementById('mail').addEventListener('input', function (e) {
+        // E-mail validatie
+        document.getElementById('email').addEventListener('input', function (e) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const isValid = emailRegex.test(e.target.value);
             
@@ -719,8 +643,8 @@
             }
         });
         
-        // Postcode check
-        document.getElementById('pcode').addEventListener('input', function (e) {
+        // Postcode validatie
+        document.getElementById('postalCode').addEventListener('input', function (e) {
             // Haal alle niet-alfanumerieke tekens eruit
             let value = e.target.value.replace(/[^a-zA-Z0-9]/g, '');
             
@@ -737,7 +661,7 @@
             
             e.target.value = value;
             
-            // Valideer de postcode
+            // Valideer de postcode met regex
             const postcodeRegex = /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/i;
             const isValid = postcodeRegex.test(value);
             
@@ -755,12 +679,12 @@
             }
         });
         
-        // Check voornaam en achternaam
-        document.getElementById('vnaam').addEventListener('input', checkVeld);
-        document.getElementById('anaam').addEventListener('input', checkVeld);
-        document.getElementById('bericht').addEventListener('input', checkVeld);
+        // Real-time validatie voor voornaam en achternaam
+        document.getElementById('firstName').addEventListener('input', validateInput);
+        document.getElementById('lastName').addEventListener('input', validateInput);
+        document.getElementById('question').addEventListener('input', validateInput);
         
-        function checkVeld(e) {
+        function validateInput(e) {
             if (e.target.value.trim().length > 0) {
                 e.target.classList.add('is-valid');
                 e.target.classList.remove('is-invalid');
@@ -770,8 +694,8 @@
             }
         }
         
-        // Checkbox check
-        document.getElementById('voorwaarden').addEventListener('change', function(e) {
+        // Checkbox validatie
+        document.getElementById('agreeTerms').addEventListener('change', function(e) {
             if (this.checked) {
                 this.classList.add('is-valid');
                 this.classList.remove('is-invalid');
