@@ -8,11 +8,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome voor iconen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Basis donker thema */
+        /* Basis stijlen */
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
         
         /* Held sectie */
@@ -20,220 +31,470 @@
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            position: relative;
         }
         
-        /* Kaart en container stijlen */
+        .held::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, #0a0a0a, transparent);
+        }
+        
+        /* Kaarten en containers */
         .kaart {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 10px;
+            background-color: #111111;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .kaart:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
         }
         
         .mapje {
-            height: 400px;
+            height: 450px;
             width: 100%;
-            border-radius: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         /* Kleding kaarten */
         .kledingkaart {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 10px;
+            background-color: #111111;
+            border: none;
+            border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .kledingkaart:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
         }
         
         .kledingkaart img {
             height: 250px;
             width: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .kledingkaart:hover img {
+            transform: scale(1.05);
         }
         
         /* Duurzaamheid sectie */
         .duurzaam {
-            background-color: #1a1a1a;
-            padding: 4rem 0;
-            border-top: 3px solid #333;
-            border-bottom: 3px solid #333;
+            background-color: #0e0e0e;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .duurzaam::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
         }
         
         /* Contact formulier */
         .contactdoos {
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background-color: #111111;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contactdoos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
         }
         
         /* Titel stijl */
         .titel {
             position: relative;
             padding-bottom: 15px;
-            margin-bottom: 30px;
-            color: #e0e0e0;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .titel:after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            width: 100px;
-            height: 3px;
-            background: #7a56d4;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
         }
         
         /* Navigatie stijl */
         .navigatie {
-            background-color: #1a1a1a !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            background-color: rgba(10, 10, 10, 0.95) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
         }
         
         .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #7a56d4 !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            color: #ffffff !important;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 5px;
+            background: linear-gradient(to bottom, #ff0055, #9000ff);
+            border-radius: 3px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px !important;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
         }
         
         /* Footer stijl */
         .voeter {
-            background-color: #0a0a0a;
-            border-top: 3px solid #333;
+            background-color: #080808;
+            padding-top: 60px;
+            position: relative;
+        }
+        
+        .voeter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
         }
         
         /* Sociale media iconen */
+        .socials {
+            display: flex;
+            gap: 15px;
+        }
+        
         .socials a {
-            margin-right: 15px;
-            transition: transform 0.3s;
-            display: inline-block;
-            color: #7a56d4 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #111111;
+            color: #ffffff !important;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .socials a:hover {
-            transform: scale(1.2);
-        }
-        
-        /* Carousel/slider stijl */
-        .slider img {
-            height: 400px;
-            object-fit: cover;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to bottom right, #ff0055, #9000ff);
         }
         
         /* Knoppen stijl */
         .paarsknop {
-            background-color: #7a56d4 !important;
-            border-color: #7a56d4 !important;
+            background: linear-gradient(to right, #ff0055, #9000ff) !important;
+            border: none !important;
             color: white !important;
+            padding: 12px 30px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+            box-shadow: 0 5px 15px rgba(144, 0, 255, 0.4) !important;
         }
         
         .paarsknop:hover {
-            background-color: #6644b8 !important;
-            border-color: #6644b8 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(144, 0, 255, 0.6) !important;
         }
         
         /* Kenmerken vakjes */
         .kenmerk {
-            padding: 20px;
+            padding: 30px;
             text-align: center;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background-color: #111111;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kenmerk::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
+        }
+        
+        .kenmerk:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
         }
         
         .icongrote {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #7a56d4;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff0055, #9000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        /* Form validatie styling */
+        /* Form styling */
         .form-control {
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            color: #e0e0e0;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
         
         .form-control:focus {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-            border-color: #7a56d4;
-            box-shadow: 0 0 0 0.25rem rgba(122, 86, 212, 0.25);
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border-color: #9000ff;
+            box-shadow: 0 0 0 0.25rem rgba(144, 0, 255, 0.25);
         }
         
         .form-control.is-invalid {
-            border-color: #dc3545;
-            background-color: #2a2a2a;
+            border-color: #ff0055;
+            background-color: rgba(255, 0, 85, 0.1);
         }
         
         .form-control.is-valid {
-            border-color: #198754;
-            background-color: #2a2a2a;
+            border-color: #00cc88;
+            background-color: rgba(0, 204, 136, 0.1);
         }
         
         .form-label {
-            color: #e0e0e0;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
         
         .accordion-button {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+            background-color: #111111;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 15px 20px;
+            border: none;
         }
         
         .accordion-button:not(.collapsed) {
-            background-color: #7a56d4;
+            background: linear-gradient(to right, #ff0055, #9000ff);
             color: white;
         }
         
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: #9000ff;
+        }
+        
         .accordion-body {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .accordion-item {
+            border: 1px solid #333;
+            background-color: #111111;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
         }
         
         .list-group-item {
             background-color: transparent;
-            color: #e0e0e0;
-            border-color: #444;
+            color: #ffffff;
+            border-color: #333;
+            padding: 12px 0;
         }
         
-        /* Form elements dark theme */
+        /* Form elements */
         .input-group-text {
-            background-color: #7a56d4;
+            background: linear-gradient(to right, #ff0055, #9000ff);
             color: white;
-            border-color: #7a56d4;
+            border: none;
         }
         
         .form-check-input {
-            background-color: #2a2a2a;
+            background-color: #1a1a1a;
             border-color: #444;
+            width: 20px;
+            height: 20px;
         }
         
         .form-check-input:checked {
-            background-color: #7a56d4;
-            border-color: #7a56d4;
+            background-color: #9000ff;
+            border-color: #9000ff;
         }
         
-        /* Text colors */
-        .paars-tekst {
-            color: #7a56d4;
+        .form-check-label {
+            padding-left: 8px;
         }
         
-        .licht-tekst {
-            color: #e0e0e0;
+        /* Carousel styling */
+        .carousel {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+        }
+        
+        .carousel-item img {
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        .carousel-control-prev,
+        .carousel-control-next {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .carousel:hover .carousel-control-prev,
+        .carousel:hover .carousel-control-next {
+            opacity: 0.8;
+        }
+        
+        /* Scherpe randen */
+        .scherp-rand {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        }
+        
+        /* Secties */
+        .donkersectie {
+            background-color: #0e0e0e;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .donkersectie::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(144, 0, 255, 0.1), transparent 70%);
+            z-index: -1;
+        }
+        
+        .lichtsectie {
+            background-color: #0a0a0a;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .lichtsectie::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(255, 0, 85, 0.1), transparent 70%);
+            z-index: -1;
+        }
+        
+        /* Hover effecten */
+        .hover-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hover-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.75s;
+            z-index: 2;
+        }
+        
+        .hover-shine:hover::before {
+            left: 100%;
+        }
+        
+        /* Gradient tekst */
+        .gradient-tekst {
+            background: linear-gradient(to right, #ff0055, #9000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
     </style>
 </head>
@@ -270,35 +531,35 @@
     <!-- Hero Sectie -->
     <section class="held">
         <div class="container">
-            <h1 class="display-2 fw-bold mb-4">BugBoetiek</h1>
+            <h1 class="display-1 fw-bold mb-4">BugBoetiek</h1>
             <p class="lead fs-3 mb-4">De nieuwste hotspot voor hippe kleding in Rotterdam</p>
-            <p class="h3 mb-4">Feestelijke opening op 08-08-2024</p>
+            <p class="h2 mb-4">Feestelijke opening op <span class="gradient-tekst">08-08-2024</span></p>
             <a href="#opendag" class="btn paarsknop btn-lg px-5 py-3 rounded-pill">Meer informatie</a>
         </div>
     </section>
 
     <!-- Hoofdkenmerken Sectie -->
-    <section class="py-5">
-        <div class="container">
+    <section class="py-5 lichtsectie">
+        <div class="container py-4">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="kenmerk">
+                    <div class="kenmerk hover-shine">
                         <i class="fas fa-tshirt icongrote"></i>
-                        <h4>Exclusieve Collecties</h4>
+                        <h4 class="my-3">Exclusieve Collecties</h4>
                         <p>Unieke stukken die je nergens anders vindt met regelmatig nieuwe items.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kenmerk">
+                    <div class="kenmerk hover-shine">
                         <i class="fas fa-leaf icongrote"></i>
-                        <h4>Duurzame Mode</h4>
+                        <h4 class="my-3">Duurzame Mode</h4>
                         <p>Milieubewuste keuzes en eerlijke productie voor een betere toekomst.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kenmerk">
+                    <div class="kenmerk hover-shine">
                         <i class="fas fa-users icongrote"></i>
-                        <h4>Community Events</h4>
+                        <h4 class="my-3">Community Events</h4>
                         <p>Word deel van onze bruisende mode-gemeenschap met regelmatige evenementen.</p>
                     </div>
                 </div>
@@ -307,23 +568,49 @@
     </section>
 
     <!-- Opening Info -->
-    <section id="opendag" class="py-5" style="background-color: #191919;">
-        <div class="container">
-            <h2 class="text-center titel fw-bold">Feestelijke Opening</h2>
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-2">
-                    <h3 class="fw-bold mb-4">08-08-2024 van 17:00 tot 23:00</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><i class="fas fa-music me-2 paars-tekst"></i> Live DJ en muziekoptredens</li>
-                        <li class="mb-3"><i class="fas fa-cocktail me-2 paars-tekst"></i> Cocktailbar met speciale openingsaanbiedingen</li>
-                        <li class="mb-3"><i class="fas fa-tag me-2 paars-tekst"></i> Exclusieve kortingen alleen tijdens de opening</li>
-                        <li><i class="fas fa-gift me-2 paars-tekst"></i> Gratis cap voor de eerste 100 bezoekers!</li>
-                    </ul>
-                    <p class="mt-4 lead">Kom langs en ontdek onze unieke collectie van de nieuwste streetwear en designer kleding.</p>
+    <section id="opendag" class="py-5 donkersectie">
+        <div class="container py-4">
+            <h2 class="titel fw-bold">Feestelijke Opening</h2>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="kaart p-4 p-lg-5">
+                        <h3 class="gradient-tekst fw-bold mb-4">08-08-2024 van 17:00 tot 23:00</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-music text-white"></i>
+                                </div>
+                                <span>Live DJ en muziekoptredens</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-cocktail text-white"></i>
+                                </div>
+                                <span>Cocktailbar met speciale openingsaanbiedingen</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-tag text-white"></i>
+                                </div>
+                                <span>Exclusieve kortingen alleen tijdens de opening</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-gift text-white"></i>
+                                </div>
+                                <span>Gratis cap voor de eerste 100 bezoekers!</span>
+                            </li>
+                        </ul>
+                        <p class="mt-4 lead">Kom langs en ontdek onze unieke collectie van de nieuwste streetwear en designer kleding.</p>
+                    </div>
                 </div>
-                <div class="col-md-6 order-md-1 mb-5 mb-md-0">
+                <div class="col-lg-6 order-lg-1 mb-5 mb-lg-0">
                     <div id="plaatjes" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner rounded-4">
+                        <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Hippe kleding">
                             </div>
@@ -347,24 +634,42 @@
     </section>
 
     <!-- Locatie Sectie -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center titel fw-bold">Onze Locatie</h2>
+    <section class="py-5 lichtsectie">
+        <div class="container py-4">
+            <h2 class="titel fw-bold">Onze Locatie</h2>
             <div class="row g-5">
-                <div class="col-md-6 order-md-2">
+                <div class="col-lg-6 order-lg-2">
                     <div class="mapje">
                         <!-- Google Maps iframe -->
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.888950554012!2d4.477722315787716!3d51.9238663797007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335e57b9c4c1%3A0x513adf59f4a1d3a4!2sKruiskade%2088%2C%203011%20EH%20Rotterdam!5e0!3m2!1snl!2snl!4v1689685214763!5m2!1snl!2snl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="col-md-6 order-md-1">
-                    <div class="kaart h-100 p-4">
-                        <h3 class="fw-bold mb-4">Kruiskade 88, Rotterdam</h3>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="kaart h-100 p-4 p-lg-5">
+                        <h3 class="gradient-tekst fw-bold mb-4">Kruiskade 88, Rotterdam</h3>
                         <p class="lead mb-4">Onze nieuwe winkel ligt in het bruisende hart van Rotterdam, omgeven door andere modezaken en horeca.</p>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item ps-0"><i class="fas fa-clock me-2 paars-tekst"></i> <strong>Openingsdagen:</strong> Dinsdag t/m Zondag</li>
-                            <li class="list-group-item ps-0"><i class="fas fa-calendar-alt me-2 paars-tekst"></i> <strong>Openingstijden:</strong> 10:00 - 18:00 (op donderdag tot 21:00)</li>
-                            <li class="list-group-item ps-0"><i class="fas fa-bus me-2 paars-tekst"></i> <strong>Bereikbaarheid:</strong> Goed bereikbaar met OV en parkeergarage op 5 minuten loopafstand</li>
+                            <li class="list-group-item ps-0 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <span><strong>Openingsdagen:</strong> Dinsdag t/m Zondag</span>
+                            </li>
+                            <li class="list-group-item ps-0 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-calendar-alt text-white"></i>
+                                </div>
+                                <span><strong>Openingstijden:</strong> 10:00 - 18:00 (op donderdag tot 21:00)</span>
+                            </li>
+                            <li class="list-group-item ps-0 d-flex align-items-center">
+                                <div style="width: 40px; height: 40px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                     style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                    <i class="fas fa-bus text-white"></i>
+                                </div>
+                                <span><strong>Bereikbaarheid:</strong> Goed bereikbaar met OV en parkeergarage op 5 minuten loopafstand</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -373,33 +678,33 @@
     </section>
 
     <!-- Kleding Sectie -->
-    <section id="kleren" class="py-5" style="background-color: #191919;">
-        <div class="container">
-            <h2 class="text-center titel fw-bold">Onze Collectie</h2>
+    <section id="kleren" class="py-5 donkersectie scherp-rand">
+        <div class="container py-4">
+            <h2 class="titel fw-bold">Onze Collectie</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="kledingkaart h-100 hover-shine">
                         <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Streetwear">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Streetwear</h5>
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold gradient-tekst mb-3">Streetwear</h5>
                             <p class="card-text">De nieuwste urban fashion van bekende en opkomende designers.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="kledingkaart h-100 hover-shine">
                         <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Designer kleding">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Designer Kleding</h5>
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold gradient-tekst mb-3">Designer Kleding</h5>
                             <p class="card-text">Exclusieve stukken van gerenommeerde en jonge ontwerpers.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="kledingkaart h-100">
+                    <div class="kledingkaart h-100 hover-shine">
                         <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Accessoires">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Accessoires</h5>
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold gradient-tekst mb-3">Accessoires</h5>
                             <p class="card-text">Completeer je look met onze unieke sieraden, tassen en hoeden.</p>
                         </div>
                     </div>
@@ -408,21 +713,57 @@
             
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="kaart p-4">
-                        <h5 class="card-title fw-bold mb-4">Wat vind je bij BugBoetiek?</h5>
+                    <div class="kaart p-4 p-lg-5">
+                        <h5 class="fw-bold gradient-tekst mb-4">Wat vind je bij BugBoetiek?</h5>
                         <div class="row">
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Heren- en dameskleding</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Streetwear en high fashion</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Schoenen en accessoires</li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Heren- en dameskleding</span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Streetwear en high fashion</span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Schoenen en accessoires</span>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Limited edition items</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Secondhand designer stukken</li>
-                                    <li class="list-group-item d-flex align-items-center"><i class="fas fa-check-circle me-2 paars-tekst"></i> Persoonlijk stijladvies</li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Limited edition items</span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Secondhand designer stukken</span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                             style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <span>Persoonlijk stijladvies</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -434,17 +775,22 @@
 
     <!-- Duurzaamheid Sectie -->
     <section id="milieu" class="duurzaam">
-        <div class="container">
-            <h2 class="text-center titel fw-bold">Duurzaamheid & Community</h2>
+        <div class="container py-4">
+            <h2 class="titel fw-bold">Duurzaamheid & Community</h2>
             <div class="row g-4">
                 <div class="col-lg-5">
-                    <img src="https://images.unsplash.com/photo-1531951634190-7e55e0c89851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded-4 mb-4" alt="Duurzaamheid">
-                    <div class="kaart p-4">
-                        <h5 class="fw-bold">Onze Visie</h5>
+                    <div class="hover-shine">
+                        <img src="https://images.unsplash.com/photo-1531951634190-7e55e0c89851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded mb-4" alt="Duurzaamheid" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);">
+                    </div>
+                    <div class="kaart p-4 p-lg-5">
+                        <h5 class="fw-bold gradient-tekst mb-3">Onze Visie</h5>
                         <p>Bij BugBoetiek geloven we dat mode en duurzaamheid hand in hand kunnen gaan. We streven naar een circulair model waar kleding langer meegaat en minder impact heeft op het milieu.</p>
                         <p>Onze community is belangrijk voor ons. Samen kunnen we de mode-industrie veranderen naar een meer duurzame en eerlijke sector.</p>
                         <div class="d-flex align-items-center mt-4">
-                            <i class="fas fa-users fa-2x me-3 paars-tekst"></i>
+                            <div style="width: 50px; height: 50px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                 style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
                             <div>
                                 <h6 class="fw-bold">Word lid van onze community</h6>
                                 <p class="mb-0">Meld je aan voor exclusieve ruilevenementen en duurzaamheidsinitiatieven.</p>
@@ -454,28 +800,28 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="accordion" id="milieuBox">
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-4">
                             <h2 class="accordion-header">
                                 <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel1">
-                                    <i class="fas fa-leaf me-2 paars-tekst"></i> Onze Klimaatdoelen
+                                    <i class="fas fa-leaf me-3"></i> Onze Klimaatdoelen
                                 </button>
                             </h2>
                             <div id="deel1" class="accordion-collapse collapse show" data-bs-parent="#milieuBox">
                                 <div class="accordion-body">
                                     <p>Bij BugBoetiek nemen we onze verantwoordelijkheid voor het milieu serieus. We streven naar:</p>
                                     <ul>
-                                        <li>100% duurzame materialen tegen 2025</li>
-                                        <li>CO2-neutrale leveringen in 2024</li>
-                                        <li>Energiezuinige winkelverlichting en apparatuur</li>
+                                        <li class="mb-2">100% duurzame materialen tegen 2025</li>
+                                        <li class="mb-2">CO2-neutrale leveringen in 2024</li>
+                                        <li class="mb-2">Energiezuinige winkelverlichting en apparatuur</li>
                                         <li>Recyclingprogramma voor oude kleding</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3">
+                        <div class="accordion-item mb-4">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel2">
-                                    <i class="fas fa-tshirt me-2 paars-tekst"></i> Kledingruil Programma
+                                    <i class="fas fa-tshirt me-3"></i> Kledingruil Programma
                                 </button>
                             </h2>
                             <div id="deel2" class="accordion-collapse collapse" data-bs-parent="#milieuBox">
@@ -488,7 +834,7 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#deel3">
-                                    <i class="fas fa-recycle me-2 paars-tekst"></i> Reparatie Service
+                                    <i class="fas fa-recycle me-3"></i> Reparatie Service
                                 </button>
                             </h2>
                             <div id="deel3" class="accordion-collapse collapse" data-bs-parent="#milieuBox">
@@ -505,16 +851,16 @@
     </section>
 
     <!-- Contact Sectie -->
-    <section id="vraag" class="py-5">
-        <div class="container">
-            <h2 class="text-center titel fw-bold">Contact</h2>
+    <section id="vraag" class="py-5 lichtsectie">
+        <div class="container py-4">
+            <h2 class="titel fw-bold">Contact</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contactdoos">
-                        <h4 class="mb-4 fw-bold text-center">Stel je vraag</h4>
+                        <h4 class="mb-4 fw-bold text-center gradient-tekst">Stel je vraag</h4>
                         <form id="vraagForm" class="form-check" novalidate>
                             <div class="row">
-                                <div class="col-md-6 mb-3 position-relative">
+                                <div class="col-md-6 mb-4 position-relative">
                                     <label for="vnaam" class="form-label">Voornaam *</label>
                                     <input type="text" class="form-control" id="vnaam" required>
                                     <div class="valid-feedback">
@@ -524,7 +870,7 @@
                                         Vul alstublieft uw voornaam in.
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3 position-relative">
+                                <div class="col-md-6 mb-4 position-relative">
                                     <label for="anaam" class="form-label">Achternaam *</label>
                                     <input type="text" class="form-control" id="anaam" required>
                                     <div class="valid-feedback">
@@ -536,7 +882,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3 position-relative">
+                                <div class="col-md-6 mb-4 position-relative">
                                     <label for="mail" class="form-label">E-mailadres *</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="mailPrefix">@</span>
@@ -549,7 +895,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3 position-relative">
+                                <div class="col-md-6 mb-4 position-relative">
                                     <label for="tel" class="form-label">Telefoonnummer *</label>
                                     <input type="tel" class="form-control" id="tel" pattern="[0-9]{10}" required>
                                     <div class="valid-feedback">
@@ -560,12 +906,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3 position-relative">
+                            <div class="mb-4 position-relative">
                                 <label for="adres" class="form-label">Adres</label>
                                 <input type="text" class="form-control" id="adres">
                             </div>
                             <div class="row">
-                                <div class="col-md-4 mb-3 position-relative">
+                                <div class="col-md-4 mb-4 position-relative">
                                     <label for="pcode" class="form-label">Postcode</label>
                                     <input type="text" class="form-control" id="pcode" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
                                     <div class="valid-feedback">
@@ -575,12 +921,12 @@
                                         Vul alstublieft een geldige postcode in (bijv. 1234 AB).
                                     </div>
                                 </div>
-                                <div class="col-md-8 mb-3 position-relative">
+                                <div class="col-md-8 mb-4 position-relative">
                                     <label for="plaats" class="form-label">Woonplaats</label>
                                     <input type="text" class="form-control" id="plaats">
                                 </div>
                             </div>
-                            <div class="mb-3 position-relative">
+                            <div class="mb-4 position-relative">
                                 <label for="bericht" class="form-label">Vraag *</label>
                                 <textarea class="form-control" id="bericht" rows="4" required></textarea>
                                 <div class="valid-feedback">
@@ -590,7 +936,7 @@
                                     Vul alstublieft uw vraag in.
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="voorwaarden" required>
                                     <label class="form-check-label" for="voorwaarden">
@@ -602,8 +948,8 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="submit" class="btn paarsknop px-4">Verzenden</button>
-                                <button type="reset" class="btn btn-outline-secondary" id="wissen">Wissen</button>
+                                <button type="submit" class="btn paarsknop px-5">Verzenden</button>
+                                <button type="reset" class="btn btn-outline-light" id="wissen">Wissen</button>
                             </div>
                         </form>
                     </div>
@@ -614,32 +960,50 @@
 
     <!-- Footer -->
     <footer class="voeter text-white py-5">
-        <div class="container">
+        <div class="container py-4">
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="fw-bold mb-3">BugBoetiek</h5>
+                    <h5 class="fw-bold mb-4 gradient-tekst">BugBoetiek</h5>
                     <p>De nieuwste hotspot voor hippe en duurzame kleding in Rotterdam.</p>
-                    <p class="mt-3">Opening op 08-08-2024!</p>
+                    <p class="mt-3">Opening op <span class="gradient-tekst">08-08-2024</span>!</p>
                 </div>
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="fw-bold mb-3">Contact</h5>
+                    <h5 class="fw-bold mb-4 gradient-tekst">Contact</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kruiskade 88, Rotterdam</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i> 010-1234567</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@bugboetiek.nl</li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                 style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <span>Kruiskade 88, Rotterdam</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                 style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <span>010-1234567</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div style="width: 30px; height: 30px;" class="d-flex align-items-center justify-content-center rounded-circle me-3 flex-shrink-0" 
+                                 style="background: linear-gradient(to right, #ff0055, #9000ff);">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <span>info@bugboetiek.nl</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="fw-bold mb-3">Volg ons</h5>
+                    <h5 class="fw-bold mb-4 gradient-tekst">Volg ons</h5>
                     <div class="socials">
-                        <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-tiktok fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-pinterest fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-tiktok fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-pinterest fa-lg"></i></a>
                     </div>
                 </div>
             </div>
-            <hr class="my-4">
+            <hr class="my-4" style="border-color: #333;">
             <div class="text-center">
                 <p class="mb-0">&copy; 2024 BugBoetiek. Alle rechten voorbehouden.</p>
             </div>
