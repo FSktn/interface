@@ -130,13 +130,33 @@
             margin-bottom: 15px;
             color: #5c6bc0;
         }
+        
+        /* Form validation styling */
+        .form-control.is-invalid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+        
+        .form-control.is-valid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+        }
+        
+        .form-feedback-icon {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            z-index: 2;
+        }
+        
+        .input-group-with-validation {
+            position: relative;
+        }
     </style>
 </head>
 <body>
     <!-- Navigatiebalk -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-primary" href="#">BugBoetiek.</a>
+            <a class="navbar-brand text-primary" href="#">BugBoetiek</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -413,66 +433,98 @@
                 <div class="col-lg-8">
                     <div class="contact-form-container">
                         <h4 class="mb-4 fw-bold text-center">Stel je vraag</h4>
-                        <form id="contactForm" novalidate>
+                        <form id="contactForm" class="needs-validation" novalidate>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3 position-relative">
                                     <label for="firstName" class="form-label">Voornaam *</label>
                                     <input type="text" class="form-control" id="firstName" required>
+                                    <div class="valid-feedback">
+                                        Ziet er goed uit!
+                                    </div>
                                     <div class="invalid-feedback">
                                         Vul alstublieft uw voornaam in.
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3 position-relative">
                                     <label for="lastName" class="form-label">Achternaam *</label>
                                     <input type="text" class="form-control" id="lastName" required>
+                                    <div class="valid-feedback">
+                                        Ziet er goed uit!
+                                    </div>
                                     <div class="invalid-feedback">
                                         Vul alstublieft uw achternaam in.
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3 position-relative">
                                     <label for="email" class="form-label">E-mailadres *</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                    <div class="invalid-feedback">
-                                        Vul alstublieft een geldig e-mailadres in.
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                        <input type="email" class="form-control" id="email" aria-describedby="inputGroupPrepend" required>
+                                        <div class="valid-feedback">
+                                            Ziet er goed uit!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Vul alstublieft een geldig e-mailadres in.
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3 position-relative">
                                     <label for="phone" class="form-label">Telefoonnummer *</label>
                                     <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                                    <div class="valid-feedback">
+                                        Ziet er goed uit!
+                                    </div>
                                     <div class="invalid-feedback">
                                         Vul alstublieft een geldig telefoonnummer in (10 cijfers).
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 position-relative">
                                 <label for="address" class="form-label">Adres</label>
                                 <input type="text" class="form-control" id="address">
                             </div>
                             <div class="row">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 position-relative">
                                     <label for="postalCode" class="form-label">Postcode</label>
                                     <input type="text" class="form-control" id="postalCode" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
+                                    <div class="valid-feedback">
+                                        Ziet er goed uit!
+                                    </div>
                                     <div class="invalid-feedback">
                                         Vul alstublieft een geldige postcode in (bijv. 1234 AB).
                                     </div>
                                 </div>
-                                <div class="col-md-8 mb-3">
+                                <div class="col-md-8 mb-3 position-relative">
                                     <label for="city" class="form-label">Woonplaats</label>
                                     <input type="text" class="form-control" id="city">
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 position-relative">
                                 <label for="question" class="form-label">Vraag *</label>
                                 <textarea class="form-control" id="question" rows="4" required></textarea>
+                                <div class="valid-feedback">
+                                    Ziet er goed uit!
+                                </div>
                                 <div class="invalid-feedback">
                                     Vul alstublieft uw vraag in.
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        Ik ga akkoord met de algemene voorwaarden *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        U moet akkoord gaan met de voorwaarden om door te gaan.
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button type="submit" class="btn btn-primary px-4">Verzenden</button>
-                                <button type="reset" class="btn btn-outline-secondary">Wissen</button>
+                                <button type="reset" class="btn btn-outline-secondary" id="resetForm">Wissen</button>
                             </div>
                         </form>
                     </div>
@@ -518,30 +570,77 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Formulier validatie
-        (function () {
-            'use strict'
-            
+        // Formulier validatie met Bootstrap 5
+        document.addEventListener('DOMContentLoaded', function () {
             // Haal alle forms op die we willen valideren
-            var forms = document.querySelectorAll('.needs-validation')
+            var forms = document.querySelectorAll('.needs-validation');
             
             // Loop over alle forms en voorkom verzending
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-                        
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
+            Array.from(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        // Toon een succes melding als het formulier geldig is
+                        event.preventDefault();
+                        alert('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    }
+                    
+                    form.classList.add('was-validated');
+                }, false);
+            });
+            
+            // Reset knop: verwijder validatiestatus
+            document.getElementById('resetForm').addEventListener('click', function() {
+                var form = document.getElementById('contactForm');
+                form.classList.remove('was-validated');
+                
+                // Reset ook alle input velden visueel
+                var inputs = form.querySelectorAll('input, textarea');
+                inputs.forEach(function(input) {
+                    input.classList.remove('is-invalid');
+                    input.classList.remove('is-valid');
+                });
+            });
+        });
         
         // Telefoonnummer validatie
         document.getElementById('phone').addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/[^\d]/g, '');
+            
+            // Visuele feedback tijdens het typen
+            if (e.target.value.length > 0 && e.target.value.length !== 10) {
+                e.target.classList.add('is-invalid');
+                e.target.classList.remove('is-valid');
+            } else if (e.target.value.length === 10) {
+                e.target.classList.add('is-valid');
+                e.target.classList.remove('is-invalid');
+            } else {
+                e.target.classList.remove('is-invalid');
+                e.target.classList.remove('is-valid');
+            }
+        });
+        
+        // E-mail validatie
+        document.getElementById('email').addEventListener('input', function (e) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const isValid = emailRegex.test(e.target.value);
+            
+            if (e.target.value.length > 0) {
+                if (isValid) {
+                    e.target.classList.add('is-valid');
+                    e.target.classList.remove('is-invalid');
+                } else {
+                    e.target.classList.add('is-invalid');
+                    e.target.classList.remove('is-valid');
+                }
+            } else {
+                e.target.classList.remove('is-valid');
+                e.target.classList.remove('is-invalid');
+            }
         });
         
         // Postcode validatie
@@ -561,6 +660,49 @@
             }
             
             e.target.value = value;
+            
+            // Valideer de postcode met regex
+            const postcodeRegex = /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/i;
+            const isValid = postcodeRegex.test(value);
+            
+            if (value.length > 0) {
+                if (isValid) {
+                    e.target.classList.add('is-valid');
+                    e.target.classList.remove('is-invalid');
+                } else {
+                    e.target.classList.add('is-invalid');
+                    e.target.classList.remove('is-valid');
+                }
+            } else {
+                e.target.classList.remove('is-valid');
+                e.target.classList.remove('is-invalid');
+            }
+        });
+        
+        // Real-time validatie voor voornaam en achternaam
+        document.getElementById('firstName').addEventListener('input', validateInput);
+        document.getElementById('lastName').addEventListener('input', validateInput);
+        document.getElementById('question').addEventListener('input', validateInput);
+        
+        function validateInput(e) {
+            if (e.target.value.trim().length > 0) {
+                e.target.classList.add('is-valid');
+                e.target.classList.remove('is-invalid');
+            } else {
+                e.target.classList.add('is-invalid');
+                e.target.classList.remove('is-valid');
+            }
+        }
+        
+        // Checkbox validatie
+        document.getElementById('agreeTerms').addEventListener('change', function(e) {
+            if (this.checked) {
+                this.classList.add('is-valid');
+                this.classList.remove('is-invalid');
+            } else {
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+            }
         });
     </script>
 </body>
