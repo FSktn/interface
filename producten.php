@@ -94,7 +94,7 @@
                                      alt="<?= htmlspecialchars($item['naam']) ?>"
                                      onerror="this.src='https://via.placeholder.com/250x250?text=Geen+Afbeelding'">
                             <?php else: ?>
-                                <img src="https://via.placeholder.com/250x250?text=Geen+Afbeelding" 
+                                <img src="https://cdn.suitsupply.com/image/upload/b_rgb:efefef,bo_300px_solid_rgb:efefef,c_pad,w_2600/b_rgb:efefef,c_pad,dpr_1,w_1690,h_3042,f_auto,q_auto,fl_progressive/products/suits/default/Summer/P7002_1.jpg" 
                                      class="product-image card-img-top" 
                                      alt="Geen afbeelding">
                             <?php endif; ?>
