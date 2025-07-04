@@ -125,4 +125,58 @@ function validateProduct($data) {
 function formatPrice($price) {
     return '€ ' . number_format($price / 100, 2, ',', '.');
 }
+
+// Afbeelding upload functie
+function handleImageUpload($file) {
+    $errors = [];
+    $uploadDir = __DIR__ . '/../images/';
+    
+    // Check if upload directory exists, create if not
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    
+    // Bestandsinfo
+    $fileName = $file['name'];
+    $fileSize = $file['size'];
+    $fileTmpName = $file['tmp_name'];
+    $fileType = $file['type'];
+    
+    // Toegestane bestandstypen
+    $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    
+    // Bestandsextensie controleren
+    $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    
+    // Validaties
+    if (!in_array($fileType, $allowedTypes)) {
+        $errors[] = 'Alleen JPG, PNG en GIF bestanden zijn toegestaan.';
+    }
+    
+    if (!in_array($fileExtension, $allowedExtensions)) {
+        $errors[] = 'Bestandsextensie niet toegestaan.';
+    }
+    
+    // Bestandsgrootte (max 5MB)
+    if ($fileSize > 5 * 1024 * 1024) {
+        $errors[] = 'Bestand is te groot. Maximaal 5MB toegestaan.';
+    }
+    
+    // Als geen fouten, bestand uploaden
+    if (empty($errors)) {
+        // Unieke bestandsnaam genereren om conflicts te voorkomen
+        $uniqueFileName = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '', $fileName);
+        $uploadPath = $uploadDir . $uniqueFileName;
+        
+        if (move_uploaded_file($fileTmpName, $uploadPath)) {
+            // Update the file name in the $_FILES array for later use
+            $_FILES['afbeelding']['name'] = $uniqueFileName;
+        } else {
+            $errors[] = 'Er is een fout opgetreden bij het uploaden van het bestand.';
+        }
+    }
+    
+    return $errors;
+}
 ?>

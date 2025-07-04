@@ -6,11 +6,16 @@
     <title>Product Toevoegen - Maison van Dijk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #0e0e0e;
             color: #e0e0e0;
             font-family: 'Raleway', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
         }
         
         .form-container {
@@ -102,12 +107,25 @@
                             'naam' => trim($_POST['naam'] ?? ''),
                             'omschrijving' => trim($_POST['omschrijving'] ?? ''),
                             'maat' => $_POST['maat'] ?? '',
-                            'afbeelding' => trim($_POST['afbeelding'] ?? ''),
+                            'afbeelding' => '',
                             'prijs' => $_POST['prijs'] ?? ''
                         ];
                         
-                        // Server-side validatie
-                        $errors = validateProduct($formData);
+                        // Afbeelding upload verwerken
+                        $uploadedFileName = null;
+                        if (isset($_FILES['afbeelding']) && $_FILES['afbeelding']['error'] === UPLOAD_ERR_OK) {
+                            $uploadErrors = handleImageUpload($_FILES['afbeelding']);
+                            if (empty($uploadErrors)) {
+                                $uploadedFileName = $_FILES['afbeelding']['name'];
+                                $formData['afbeelding'] = $uploadedFileName;
+                            } else {
+                                $errors['afbeelding'] = $uploadErrors[0]; // Eerste fout tonen
+                            }
+                        }
+                        
+                        // Server-side validatie (zonder afbeelding)
+                        $validationErrors = validateProduct($formData);
+                        $errors = array_merge($errors, $validationErrors);
                         
                         // Prijs converteren naar integer (centen)
                         if (!empty($formData['prijs']) && is_numeric($formData['prijs'])) {
@@ -154,7 +172,7 @@
                         </div>
                     <?php endif; ?>
                     
-                    <form method="POST" class="needs-validation" novalidate>
+                    <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <div class="mb-3">
                             <label for="naam" class="form-label">Productnaam *</label>
                             <input type="text" 
@@ -194,14 +212,22 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="afbeelding" class="form-label">Afbeelding (bestandsnaam)</label>
-                            <input type="text" 
-                                   class="form-control" 
+                            <label for="afbeelding" class="form-label">Productafbeelding</label>
+                            <input type="file" 
+                                   class="form-control <?= isset($errors['afbeelding']) ? 'is-invalid' : '' ?>" 
                                    id="afbeelding" 
                                    name="afbeelding" 
-                                   value="<?= htmlspecialchars($formData['afbeelding'] ?? '') ?>" 
-                                   placeholder="bijv. product.jpg">
-                            <div class="form-text">Voer alleen de bestandsnaam in (bijv. product.jpg)</div>
+                                   accept="image/*"
+                                   onchange="previewImage(this)">
+                            <div class="form-text">Selecteer een afbeelding (JPG, PNG, GIF - max 5MB)</div>
+                            <?php if (isset($errors['afbeelding'])): ?>
+                                <div class="invalid-feedback"><?= htmlspecialchars($errors['afbeelding']) ?></div>
+                            <?php endif; ?>
+                            
+                            <!-- Afbeelding preview -->
+                            <div id="imagePreview" class="mt-3" style="display: none;">
+                                <img id="preview" src="" alt="Preview" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
+                            </div>
                         </div>
                         
                         <div class="mb-3">
@@ -239,6 +265,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Afbeelding preview functie
+        function previewImage(input) {
+            const preview = document.getElementById('preview');
+            const previewContainer = document.getElementById('imagePreview');
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        }
+        
         // Client-side validatie
         (function() {
             'use strict';
