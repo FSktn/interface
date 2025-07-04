@@ -69,27 +69,31 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <?php
-        require_once 'includes/database.php';
-        
-        // Product ID ophalen en valideren
-        $product_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-        
-        if ($product_id <= 0) {
-            echo '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle me-2"></i>Ongeldig product ID.</div>';
-            echo '<a href="producten.php" class="btn btn-gold">Terug naar Producten</a>';
-            exit;
-        }
-        
+    <?php
+    require_once 'includes/database.php';
+    
+    // Product ID ophalen en valideren
+    $product_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+    $error_message = '';
+    $item = null;
+    
+    if ($product_id <= 0) {
+        $error_message = 'Ongeldig product ID.';
+    } else {
         $product = new Product();
         $item = $product->getProductById($product_id);
         
-        if (!$item):
-        ?>
-            <div class="alert alert-warning text-center">
+        if (!$item) {
+            $error_message = 'Product niet gevonden.';
+        }
+    }
+    ?>
+
+    <div class="container mt-5">
+        <?php if ($error_message): ?>
+            <div class="alert alert-<?= $product_id <= 0 ? 'danger' : 'warning' ?> text-center">
                 <i class="fas fa-exclamation-triangle me-2"></i>
-                Product niet gevonden.
+                <?= htmlspecialchars($error_message) ?>
             </div>
             <div class="text-center">
                 <a href="producten.php" class="btn btn-gold">Terug naar Producten</a>
@@ -99,9 +103,9 @@
         <div class="row">
             <div class="col-md-6 mb-4">
                 <?php if (!empty($item['afbeelding'])): ?>
-                    <img src="images/<?php echo htmlspecialchars($item['afbeelding']); ?>" 
+                    <img src="images/<?= htmlspecialchars($item['afbeelding']) ?>" 
                          class="product-image" 
-                         alt="<?php echo htmlspecialchars($item['naam']); ?>"
+                         alt="<?= htmlspecialchars($item['naam']) ?>"
                          onerror="this.src='https://via.placeholder.com/500x400?text=Geen+Afbeelding'">
                 <?php else: ?>
                     <img src="https://via.placeholder.com/500x400?text=Geen+Afbeelding" 
@@ -112,10 +116,10 @@
             
             <div class="col-md-6">
                 <div class="product-detail h-100">
-                    <h1 class="mb-4"><?php echo htmlspecialchars($item['naam']); ?></h1>
+                    <h1 class="mb-4"><?= htmlspecialchars($item['naam']) ?></h1>
                     
                     <?php if (!empty($item['prijs'])): ?>
-                        <p class="price mb-4"><?php echo formatPrice($item['prijs']); ?></p>
+                        <p class="price mb-4"><?= formatPrice($item['prijs']) ?></p>
                     <?php endif; ?>
                     
                     <div class="product-info mb-4">
@@ -123,14 +127,14 @@
                         
                         <div class="row mt-3">
                             <div class="col-sm-4"><strong>Product ID:</strong></div>
-                            <div class="col-sm-8">#<?php echo $item['id']; ?></div>
+                            <div class="col-sm-8">#<?= $item['id'] ?></div>
                         </div>
                         
                         <?php if (!empty($item['maat'])): ?>
                         <div class="row mt-2">
                             <div class="col-sm-4"><strong>Maat:</strong></div>
                             <div class="col-sm-8">
-                                <span class="badge bg-secondary"><?php echo strtoupper(htmlspecialchars($item['maat'])); ?></span>
+                                <span class="badge bg-secondary"><?= strtoupper(htmlspecialchars($item['maat'])) ?></span>
                             </div>
                         </div>
                         <?php endif; ?>
@@ -138,7 +142,7 @@
                         <?php if (!empty($item['afbeelding'])): ?>
                         <div class="row mt-2">
                             <div class="col-sm-4"><strong>Afbeelding:</strong></div>
-                            <div class="col-sm-8"><?php echo htmlspecialchars($item['afbeelding']); ?></div>
+                            <div class="col-sm-8"><?= htmlspecialchars($item['afbeelding']) ?></div>
                         </div>
                         <?php endif; ?>
                     </div>
@@ -146,7 +150,7 @@
                     <?php if (!empty($item['omschrijving'])): ?>
                     <div class="mb-4">
                         <h5><i class="fas fa-file-text me-2"></i>Omschrijving</h5>
-                        <p class="mt-3"><?php echo nl2br(htmlspecialchars($item['omschrijving'])); ?></p>
+                        <p class="mt-3"><?= nl2br(htmlspecialchars($item['omschrijving'])) ?></p>
                     </div>
                     <?php endif; ?>
                     

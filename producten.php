@@ -89,9 +89,9 @@
                     <div class="product-card h-100">
                         <div class="card h-100">
                             <?php if (!empty($item['afbeelding'])): ?>
-                                <img src="images/<?php echo htmlspecialchars($item['afbeelding']); ?>" 
+                                <img src="images/<?= htmlspecialchars($item['afbeelding']) ?>" 
                                      class="product-image card-img-top" 
-                                     alt="<?php echo htmlspecialchars($item['naam']); ?>"
+                                     alt="<?= htmlspecialchars($item['naam']) ?>"
                                      onerror="this.src='https://via.placeholder.com/250x250?text=Geen+Afbeelding'">
                             <?php else: ?>
                                 <img src="https://via.placeholder.com/250x250?text=Geen+Afbeelding" 
@@ -100,24 +100,24 @@
                             <?php endif; ?>
                             
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><?php echo htmlspecialchars($item['naam']); ?></h5>
+                                <h5 class="card-title"><?= htmlspecialchars($item['naam']) ?></h5>
                                 
                                 <?php if (!empty($item['omschrijving'])): ?>
-                                    <p class="card-text"><?php echo htmlspecialchars($item['omschrijving']); ?></p>
+                                    <p class="card-text"><?= htmlspecialchars($item['omschrijving']) ?></p>
                                 <?php endif; ?>
                                 
                                 <div class="mt-auto">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <?php if (!empty($item['maat'])): ?>
-                                            <span class="badge bg-secondary">Maat: <?php echo strtoupper(htmlspecialchars($item['maat'])); ?></span>
+                                            <span class="badge bg-secondary">Maat: <?= strtoupper(htmlspecialchars($item['maat'])) ?></span>
                                         <?php endif; ?>
                                         
                                         <?php if (!empty($item['prijs'])): ?>
-                                            <span class="price"><?php echo formatPrice($item['prijs']); ?></span>
+                                            <span class="price"><?= formatPrice($item['prijs']) ?></span>
                                         <?php endif; ?>
                                     </div>
                                     
-                                    <a href="product_detail.php?id=<?php echo $item['id']; ?>" 
+                                    <a href="product_detail.php?id=<?= $item['id'] ?>" 
                                        class="btn btn-gold w-100">
                                         <i class="fas fa-eye me-2"></i>Bekijk Details
                                     </a>

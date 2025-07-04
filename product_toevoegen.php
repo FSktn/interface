@@ -150,7 +150,7 @@
                     <?php if (!empty($errors['general'])): ?>
                         <div class="alert alert-danger">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                            <?php echo htmlspecialchars($errors['general']); ?>
+                            <?= htmlspecialchars($errors['general']) ?>
                         </div>
                     <?php endif; ?>
                     
@@ -158,13 +158,13 @@
                         <div class="mb-3">
                             <label for="naam" class="form-label">Productnaam *</label>
                             <input type="text" 
-                                   class="form-control <?php echo isset($errors['naam']) ? 'is-invalid' : ''; ?>" 
+                                   class="form-control <?= isset($errors['naam']) ? 'is-invalid' : '' ?>" 
                                    id="naam" 
                                    name="naam" 
-                                   value="<?php echo htmlspecialchars($formData['naam'] ?? ''); ?>" 
+                                   value="<?= htmlspecialchars($formData['naam'] ?? '') ?>" 
                                    required>
                             <?php if (isset($errors['naam'])): ?>
-                                <div class="invalid-feedback"><?php echo htmlspecialchars($errors['naam']); ?></div>
+                                <div class="invalid-feedback"><?= htmlspecialchars($errors['naam']) ?></div>
                             <?php endif; ?>
                         </div>
                         
@@ -173,23 +173,23 @@
                             <textarea class="form-control" 
                                       id="omschrijving" 
                                       name="omschrijving" 
-                                      rows="3"><?php echo htmlspecialchars($formData['omschrijving'] ?? ''); ?></textarea>
+                                      rows="3"><?= htmlspecialchars($formData['omschrijving'] ?? '') ?></textarea>
                         </div>
                         
                         <div class="mb-3">
                             <label for="maat" class="form-label">Maat</label>
-                            <select class="form-control <?php echo isset($errors['maat']) ? 'is-invalid' : ''; ?>" 
+                            <select class="form-control <?= isset($errors['maat']) ? 'is-invalid' : '' ?>" 
                                     id="maat" 
                                     name="maat">
                                 <option value="">Geen maat geselecteerd</option>
-                                <option value="xs" <?php echo ($formData['maat'] ?? '') === 'xs' ? 'selected' : ''; ?>>XS</option>
-                                <option value="s" <?php echo ($formData['maat'] ?? '') === 's' ? 'selected' : ''; ?>>S</option>
-                                <option value="m" <?php echo ($formData['maat'] ?? '') === 'm' ? 'selected' : ''; ?>>M</option>
-                                <option value="l" <?php echo ($formData['maat'] ?? '') === 'l' ? 'selected' : ''; ?>>L</option>
-                                <option value="xl" <?php echo ($formData['maat'] ?? '') === 'xl' ? 'selected' : ''; ?>>XL</option>
+                                <option value="xs" <?= ($formData['maat'] ?? '') === 'xs' ? 'selected' : '' ?>>XS</option>
+                                <option value="s" <?= ($formData['maat'] ?? '') === 's' ? 'selected' : '' ?>>S</option>
+                                <option value="m" <?= ($formData['maat'] ?? '') === 'm' ? 'selected' : '' ?>>M</option>
+                                <option value="l" <?= ($formData['maat'] ?? '') === 'l' ? 'selected' : '' ?>>L</option>
+                                <option value="xl" <?= ($formData['maat'] ?? '') === 'xl' ? 'selected' : '' ?>>XL</option>
                             </select>
                             <?php if (isset($errors['maat'])): ?>
-                                <div class="invalid-feedback"><?php echo htmlspecialchars($errors['maat']); ?></div>
+                                <div class="invalid-feedback"><?= htmlspecialchars($errors['maat']) ?></div>
                             <?php endif; ?>
                         </div>
                         
@@ -199,7 +199,7 @@
                                    class="form-control" 
                                    id="afbeelding" 
                                    name="afbeelding" 
-                                   value="<?php echo htmlspecialchars($formData['afbeelding'] ?? ''); ?>" 
+                                   value="<?= htmlspecialchars($formData['afbeelding'] ?? '') ?>" 
                                    placeholder="bijv. product.jpg">
                             <div class="form-text">Voer alleen de bestandsnaam in (bijv. product.jpg)</div>
                         </div>
@@ -209,15 +209,15 @@
                             <div class="input-group">
                                 <span class="input-group-text">€</span>
                                 <input type="number" 
-                                       class="form-control <?php echo isset($errors['prijs']) ? 'is-invalid' : ''; ?>" 
+                                       class="form-control <?= isset($errors['prijs']) ? 'is-invalid' : '' ?>" 
                                        id="prijs" 
                                        name="prijs" 
-                                       value="<?php echo isset($formData['prijs']) && $formData['prijs'] > 0 ? number_format($formData['prijs'] / 100, 2, '.', '') : ''; ?>" 
+                                       value="<?= isset($formData['prijs']) && $formData['prijs'] > 0 ? number_format($formData['prijs'] / 100, 2, '.', '') : '' ?>" 
                                        step="0.01" 
                                        min="0" 
                                        placeholder="0.00">
                                 <?php if (isset($errors['prijs'])): ?>
-                                    <div class="invalid-feedback"><?php echo htmlspecialchars($errors['prijs']); ?></div>
+                                    <div class="invalid-feedback"><?= htmlspecialchars($errors['prijs']) ?></div>
                                 <?php endif; ?>
                             </div>
                             <div class="form-text">Voer de prijs in euro's in (bijv. 899.00)</div>
