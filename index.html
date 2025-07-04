@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison van Dijk - Exclusieve Pakken & Maatwerk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0e0e0e;
+            color: #e0e0e0;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .Hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1614521272693-73052eaefc51?q=80&w=2694&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .kaart, .kenmerk, .contactdoos {
+            background-color: #171717;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 1px solid #936c39;
+        }
+        
+        .pakkaart {
+            background-color: #171717;
+            overflow: hidden;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .pakkaart:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pakkaart img {
+            height: 350px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background-color: rgba(23, 23, 23, 0.9);
+            border-left: 3px solid #936c39;
+        }
+        
+        .titel {
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .titel:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #936c39;
+        }
+        
+        .navigatie {
+            background-color: rgba(10, 10, 10, 0.95) !important;
+            border-bottom: 1px solid #936c39;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+        
+        .voeter {
+            background-color: #0a0a0a;
+            border-top: 1px solid #936c39;
+        }
+        
+        .goudknop {
+            background-color: #936c39 !important;
+            border-color: #936c39 !important;
+            border-radius: 0;
+            padding: 10px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .goudknop:hover {
+            background-color: #7d5b2e !important;
+        }
+        
+        .icongrote {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #936c39;
+        }
+        
+        .form-control {
+            background-color: #222;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            border-radius: 0;
+        }
+        
+        .form-control:focus {
+            background-color: #222;
+            color: #e0e0e0;
+            border-color: #936c39;
+            box-shadow: none;
+        }
+        
+        .accordion-button {
+            background-color: #171717;
+            color: #e0e0e0;
+            border-radius: 0;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: #936c39;
+            color: white;
+        }
+        
+        .accordion-body {
+            background-color: #222;
+            color: #e0e0e0;
+        }
+        
+        .goud-tekst {color: #936c39;}
+        .licht-sectie {background-color: #0e0e0e;}
+        .donker-sectie {background-color: #080808;}
+        .mapje {height: 400px; width: 100%;}
+        
+        .stof-item {
+            position: relative;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .stof-item img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .stof-naam {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(23, 23, 23, 0.9);
+            padding: 10px;
+            border-left: 2px solid #936c39;
+        }
+        
+        .stoffen-title {
+            border-left: 3px solid #936c39;
+            padding-left: 15px;
+        }
+        
+        .nav-link {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #bbb;
+            text-align: center;
+            position: relative;
+            padding: 20px 40px;
+        }
+        
+        .quote:before, .quote:after {
+            font-family: 'FontAwesome';
+            position: absolute;
+            color: #936c39;
+            font-size: 1.5rem;
+        }
+        
+        .quote:before {content: '\f10d'; top: 0; left: 0;}
+        .quote:after {content: '\f10e'; bottom: 0; right: 0;}
+        
+        .list-group-item {
+            background-color: transparent;
+            color: #e0e0e0;
+            border-color: #333;
+        }
+        
+        .socials a {
+            color: #936c39 !important;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigatie -->
+    <nav class="navbar navbar-expand-lg navbar-dark navigatie sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo" href="#">Maison van Dijk</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="producten.php">Producten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collectie">Collectie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#maatwerk">Maatwerk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stoffen">Stoffen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#opendag">Opening</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vraag">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="Hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Maison van Dijk</h1>
+            <p class="lead fs-5 mb-4">Exclusieve maatpakken & handgemaakte luxe herenkleding</p>
+            <p class="h4 mb-4">Feestelijke opening op 08-08-2024</p>
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <a href="producten.php" class="btn goudknop btn-lg me-3">Bekijk Producten</a>
+                <a href="#collectie" class="btn btn-outline-secondary btn-lg">Meer Info</a>
+                <a href="#vraag" class="btn btn-outline-light btn-lg">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kenmerken -->
+    <section class="py-5 licht-sectie">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="kenmerk">
+                        <i class="fas fa-cut icongrote"></i>
+                        <h4>Maatwerk</h4>
+                        <p>Pakken volledig op maat gemaakt volgens uw persoonlijke wensen en maten.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="kenmerk">
+                        <i class="fas fa-award icongrote"></i>
+                        <h4>Premium Stoffen</h4>
+                        <p>Exclusieve stoffen van topkwaliteit zoals Loro Piana, Dormeuil en Holland & Sherry.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="kenmerk">
+                        <i class="fas fa-hands icongrote"></i>
+                        <h4>Vakmanschap</h4>
+                        <p>Traditioneel kleermakersvak met oog voor detail en perfecte pasvorm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="py-4 donker-sectie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <p class="quote">Een perfect passend pak geeft een man vertrouwen en elegantie die niet te evenaren is met confectiekleding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collectie -->
+    <section id="collectie" class="py-5 licht-sectie">
+        <div class="container">
+            <h2 class="titel">Exclusieve Collectie</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pakkaart">
+                        <img src="https://images.unsplash.com/photo-1594938291221-94f18cbb5660?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Zakelijk pak">
+                        <div class="overlay">
+                            <h5 class="goud-tekst">Milano Zakelijk</h5>
+                            <p class="small fst-italic opacity-75">Italiaanse wol, modern slim fit</p>
+                            <p class="fs-5">€899</p>
+                            <a href="#vraag" class="btn goudknop btn-sm mt-2">Meer Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pakkaart">
+                        <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Trouwpak">
+                        <div class="overlay">
+                            <h5 class="goud-tekst">Venetië Ceremonie</h5>
+                            <p class="small fst-italic opacity-75">Fijne Engelse wol, met zijden accenten</p>
+                            <p class="fs-5">€1.299</p>
+                            <a href="#vraag" class="btn goudknop btn-sm mt-2">Meer Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pakkaart">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1760&auto=format&fit=crop" alt="Casual pak">
+                        <div class="overlay">
+                            <h5 class="goud-tekst">Napoli Casual</h5>
+                            <p class="small fst-italic opacity-75">Wol-linnen mix, half gevoerd</p>
+                            <p class="fs-5">€799</p>
+                            <a href="#vraag" class="btn goudknop btn-sm mt-2">Meer Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="kaart">
+                        <h5 class="goud-tekst mb-4">Onze collectie bevat</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Zakelijke pakken</li>
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Ceremoniële pakken</li>
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Smoking en black tie</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Casual jasjes & blazers</li>
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Pantalons op maat</li>
+                                    <li class="list-group-item"><i class="fas fa-check me-2 goud-tekst"></i> Exclusieve accessoires</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maatwerk -->
+    <section id="maatwerk" class="py-5 donker-sectie">
+        <div class="container">
+            <h2 class="titel">Het Maatwerk Proces</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1524991480436-74348b3085fe?q=80&w=2839&auto=format&fit=crop" class="img-fluid mb-4" alt="Maatwerk proces">
+                    <div class="kaart">
+                        <h5 class="goud-tekst">Persoonlijke Ervaring</h5>
+                        <p>Bij Maison van Dijk nemen we de tijd voor iedere klant. Een maatpak is een investering in uzelf. Onze ervaren kleermakers adviseren u bij elke stap van het proces.</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <i class="fas fa-calendar-check fa-2x me-3 goud-tekst"></i>
+                            <div>
+                                <h6 class="fw-bold">Maak een afspraak</h6>
+                                <p class="mb-0">Plan een vrijblijvende consultatie met een van onze kleermakers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="accordion" id="maatwerkBox">
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#stap1">
+                                    <i class="fas fa-ruler-combined me-2"></i> 1. Maten nemen & consultatie
+                                </button>
+                            </h2>
+                            <div id="stap1" class="accordion-collapse collapse show" data-bs-parent="#maatwerkBox">
+                                <div class="accordion-body">
+                                    <p>Bij de eerste afspraak nemen we uitgebreid de maten op. We bespreken:</p>
+                                    <ul>
+                                        <li>Uw wensen qua stijl en pasvorm</li>
+                                        <li>De verschillende stofopties en hun eigenschappen</li>
+                                        <li>Details zoals revers, zakken, voering en knopen</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#stap2">
+                                    <i class="fas fa-scissors me-2"></i> 2. Het maakproces
+                                </button>
+                            </h2>
+                            <div id="stap2" class="accordion-collapse collapse" data-bs-parent="#maatwerkBox">
+                                <div class="accordion-body">
+                                    <p>Na uw eerste afspraak starten onze kleermakers met het maken van uw pak.</p>
+                                    <p>Elke stap wordt met uiterste precisie uitgevoerd volgens traditionele technieken die garant staan voor een perfect resultaat.</p>
+                                    <p>Dit proces duurt gemiddeld 4-6 weken, afhankelijk van de complexiteit en beschikbaarheid van de gekozen stoffen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#stap3">
+                                    <i class="fas fa-user-check me-2"></i> 3. Pasprocedure
+                                </button>
+                            </h2>
+                            <div id="stap3" class="accordion-collapse collapse" data-bs-parent="#maatwerkBox">
+                                <div class="accordion-body">
+                                    <p>Wanneer uw pak gereed is voor de eerste pas, nodigen wij u uit voor een pasafspraak.</p>
+                                    <p>Tijdens deze afspraak wordt het pak gecontroleerd op pasvorm en worden eventuele aanpassingen gemarkeerd.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#stap4">
+                                    <i class="fas fa-check-circle me-2"></i> 4. Aflevering
+                                </button>
+                            </h2>
+                            <div id="stap4" class="accordion-collapse collapse" data-bs-parent="#maatwerkBox">
+                                <div class="accordion-body">
+                                    <p>Bij de laatste afspraak wordt het volledig afgewerkte pak gepresenteerd en kunt u het voor het eerst dragen.</p>
+                                    <p>Wij geven u advies over onderhoud en verzorging van uw nieuwe maatpak.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stoffen -->
+    <section id="stoffen" class="py-5 licht-sectie">
+        <div class="container">
+            <h2 class="titel">Premium Stoffen</h2>
+            <div class="row mb-4">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p>Bij Maison van Dijk werken we uitsluitend met stoffen van de meest gerenommeerde leveranciers ter wereld. Kwaliteit en duurzaamheid staan voorop.</p>
+                </div>
+            </div>
+            <h4 class="stoffen-title goud-tekst mb-4">Onze collectie</h4>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stof-item">
+                        <img src="https://plus.unsplash.com/premium_photo-1675788271687-6a50324324e1?q=80&w=2340&auto=format&fit=crop" alt="Super 150's wol">
+                        <div class="stof-naam">
+                            <h6 class="mb-0">Super 150's wol</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stof-item">
+                        <img src="https://plus.unsplash.com/premium_photo-1701194079032-07e10a1f990c?q=80&w=2340&auto=format&fit=crop" alt="Kasjmier blend">
+                        <div class="stof-naam">
+                            <h6 class="mb-0">Kasjmier blend</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stof-item">
+                        <img src="https://images.unsplash.com/photo-1554967651-3997ad1c43b0?q=80&w=1287&auto=format&fit=crop" alt="Linnen & katoen">
+                        <div class="stof-naam">
+                            <h6 class="mb-0">Linnen & katoen</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stof-item">
+                        <img src="https://plus.unsplash.com/premium_photo-1672342860744-bd2d328f98fc?q=80&w=2832&auto=format&fit=crop" alt="Mohair & zijde">
+                        <div class="stof-naam">
+                            <h6 class="mb-0">Mohair & zijde</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#vraag" class="btn goudknop">Contact Opnemen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opening -->
+    <section id="opendag" class="py-5 donker-sectie">
+        <div class="container">
+            <h2 class="titel">Feestelijke Opening</h2>
+            <div class="row">
+                <div class="col-md-6 order-md-2">
+                    <div class="kaart">
+                        <h3 class="fw-bold mb-4 goud-tekst">08-08-2024 van 17:00 tot 23:00</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-glass-cheers me-2 goud-tekst"></i> Champagne & verfijnde hapjes</li>
+                            <li class="mb-3"><i class="fas fa-user-tie me-2 goud-tekst"></i> Demonstraties door onze kleermakers</li>
+                            <li class="mb-3"><i class="fas fa-percentage me-2 goud-tekst"></i> Exclusieve openingsaanbiedingen</li>
+                            <li><i class="fas fa-gift me-2 goud-tekst"></i> Gepersonaliseerde stropdas voor de eerste 50 bezoekers</li>
+                        </ul>
+                        <p class="mt-4">Wij nodigen u uit om kennis te maken met ons team en onze exclusieve collectie stoffen en pakken te ontdekken.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1 mb-4 mb-md-0">
+                    <div id="plaatjes" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=2340&auto=format&fit=crop" class="d-block w-100" alt="Maatpakken collectie">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1676278746071-cd54ce97bf16?q=80&w=2340&auto=format&fit=crop" class="d-block w-100" alt="Stofcollectie">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1515736076039-a3ca66043b27?q=80&w=2340&auto=format&fit=crop" class="d-block w-100" alt="Atelier">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#plaatjes" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#plaatjes" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locatie -->
+    <section class="py-5 licht-sectie">
+        <div class="container">
+            <h2 class="titel">Onze Locatie</h2>
+            <div class="row">
+                <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                    <div class="mapje">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.888950554012!2d4.477722315787716!3d51.9238663797007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335e57b9c4c1%3A0x513adf59f4a1d3a4!2sKruiskade%2088%2C%203011%20EH%20Rotterdam!5e0!3m2!1snl!2snl!4v1689685214763!5m2!1snl!2snl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <div class="kaart h-100">
+                        <h3 class="fw-bold mb-4 goud-tekst">Kruiskade 88, Rotterdam</h3>
+                        <p class="lead mb-4">Onze atelier en showroom bevinden zich in het stijlvolle centrum van Rotterdam, in een klassiek pand met moderne inrichting.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item ps-0"><i class="fas fa-clock me-2 goud-tekst"></i> <strong>Openingsdagen:</strong> Dinsdag t/m zaterdag</li>
+                            <li class="list-group-item ps-0"><i class="fas fa-calendar-alt me-2 goud-tekst"></i> <strong>Openingstijden:</strong> 10:00 - 18:00 (op donderdag tot 20:00)</li>
+                            <li class="list-group-item ps-0"><i class="fas fa-info-circle me-2 goud-tekst"></i> <strong>Advies:</strong> Wij werken op afspraak voor een persoonlijke ervaring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="vraag" class="py-5 donker-sectie">
+        <div class="container">
+            <h2 class="titel">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contactdoos">
+                        <h4 class="mb-4 fw-bold text-center goud-tekst">Maak een afspraak of stel uw vraag</h4>
+                        <form id="vraagForm" class="form-check" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="vnaam" class="form-label">Voornaam *</label>
+                                    <input type="text" class="form-control" id="vnaam" required>
+                                    <div class="invalid-feedback">Vul alstublieft uw voornaam in.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="anaam" class="form-label">Achternaam *</label>
+                                    <input type="text" class="form-control" id="anaam" required>
+                                    <div class="invalid-feedback">Vul alstublieft uw achternaam in.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="mail" class="form-label">E-mailadres *</label>
+                                    <input type="email" class="form-control" id="mail" required>
+                                    <div class="invalid-feedback">Vul alstublieft een geldig e-mailadres in.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tel" class="form-label">Telefoonnummer *</label>
+                                    <input type="tel" class="form-control" id="tel" pattern="[0-9]{10}" required>
+                                    <div class="invalid-feedback">Vul alstublieft een geldig telefoonnummer in (10 cijfers).</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="afspraakType" class="form-label">Type afspraak</label>
+                                <select class="form-control" id="afspraakType">
+                                    <option>Eerste consultatie</option>
+                                    <option>Informatie over maatwerk</option>
+                                    <option>Collectie bekijken</option>
+                                    <option>Stoffenstalen aanvragen</option>
+                                    <option>Anders</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bericht" class="form-label">Uw vraag of wensen *</label>
+                                <textarea class="form-control" id="bericht" rows="4" required></textarea>
+                                <div class="invalid-feedback">Vul alstublieft uw vraag in.</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="voorwaarden" required>
+                                    <label class="form-check-label" for="voorwaarden">Ik ga akkoord met de algemene voorwaarden *</label>
+                                    <div class="invalid-feedback">U moet akkoord gaan met de voorwaarden om door te gaan.</div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn goudknop">Verzenden</button>
+                                <button type="reset" class="btn btn-outline-secondary" id="wissen">Wissen</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="voeter text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold mb-3">Maison van Dijk</h5>
+                    <p>Exclusieve maatpakken & handgemaakte luxe herenkleding voor de moderne gentleman.</p>
+                    <p class="mt-3">Opening op 08-08-2024!</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold mb-3">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kruiskade 88, Rotterdam</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> 010-1234567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@maisonvandijk.nl</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Volg ons</h5>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: #333;">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Maison van Dijk. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('vraagForm');
+            
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    event.preventDefault();
+                    alert('Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.');
+                    form.reset();
+                }
+                form.classList.add('was-validated');
+            });
+            
+            document.getElementById('wissen').addEventListener('click', function() {
+                form.classList.remove('was-validated');
+            });
+            
+            document.getElementById('tel').addEventListener('input', function (e) {
+                e.target.value = e.target.value.replace(/[^\d]/g, '');
+            });
+        });
+    </script>
+</body>
+</html>

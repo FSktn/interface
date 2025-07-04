@@ -1,15 +1,16 @@
 # Maison van Dijk - Product Management Systeem
 
-Dit project bevat een complete PHP database applicatie voor het beheren van producten voor Maison van Dijk.
+Dit project bevat een complete PHP SQLite database applicatie voor het beheren van producten voor Maison van Dijk.
 
 ## Bestanden Structuur
 
 ```
-/workspaces/interface/
+/home/runner/work/interface/interface/
 ├── index.html                  # Hoofdpagina van de website
-├── database.sql                # Database schema en voorbeeldgegevens
+├── database.sql                # SQLite schema en voorbeeldgegevens
+├── producten.db                # SQLite database bestand (automatisch aangemaakt)
 ├── includes/
-│   └── database.php           # Database klasse en functies
+│   └── database.php           # SQLite database klasse en functies
 ├── images/                    # Map voor productafbeeldingen
 ├── producten.php             # Overzichtspagina van alle producten
 ├── product_detail.php        # Detailpagina voor individuele producten
@@ -18,15 +19,16 @@ Dit project bevat een complete PHP database applicatie voor het beheren van prod
 
 ## Database Setup
 
-1. **Database aanmaken:**
-   - Importeer `database.sql` in je MySQL database
-   - Dit maakt de database `producten_db` aan met de `producten` tabel
+1. **Automatische SQLite database:**
+   - Database wordt automatisch aangemaakt bij eerste gebruik
+   - Gebruikt SQLite bestand: `producten.db`
+   - Schema wordt automatisch geladen uit `database.sql`
 
 2. **Database velden:**
-   - `id`: AUTO_INCREMENT primary key
+   - `id`: INTEGER PRIMARY KEY AUTOINCREMENT
    - `naam`: TEXT NOT NULL (verplicht)
    - `omschrijving`: TEXT (optioneel)
-   - `maat`: ENUM('xs','s','m','l','xl') (optioneel)
+   - `maat`: TEXT CHECK constraint ('xs','s','m','l','xl') (optioneel)
    - `afbeelding`: TEXT (optioneel - bestandsnaam)
    - `prijs`: INTEGER (opgeslagen in centen)
 
@@ -58,20 +60,17 @@ Dit project bevat een complete PHP database applicatie voor het beheren van prod
 
 ## Database Configuratie
 
-Pas de database instellingen aan in `includes/database.php`:
-
-```php
-private $host = 'localhost';
-private $dbname = 'producten_db';
-private $username = 'root';
-private $password = '';
-```
+De SQLite database wordt automatisch geconfigureerd in `includes/database.php`:
+- Database bestand: `producten.db` (wordt automatisch aangemaakt)
+- Verbinding via PDO SQLite
+- Schema wordt automatisch geladen bij eerste gebruik
+- Voorbeelddata wordt automatisch toegevoegd als database leeg is
 
 ## Gebruik
 
-1. **Setup database** met `database.sql`
-2. **Configureer** database verbinding in `includes/database.php`
-3. **Plaats afbeeldingen** in de `images/` map
+1. **Geen handmatige setup nodig** - database wordt automatisch aangemaakt
+2. **Plaats afbeeldingen** in de `images/` map
+3. **Start een lokale PHP server:** `php -S localhost:8000`
 4. **Navigeer naar:**
    - `index.html` - Hoofdpagina van de website
    - `producten.php` - Alle producten bekijken
@@ -81,9 +80,19 @@ private $password = '';
 ## Beveiliging
 
 - Prepared statements tegen SQL injection
-- HTML escaping tegen XSS
+- HTML escaping tegen XSS  
 - Server-side validatie van alle invoer
 - Proper error handling
+- SQLite bestand permissions
+
+## Technische Features
+
+- **SQLite Database:** Geen externe database server nodig
+- **Automatische Setup:** Database en schema worden automatisch aangemaakt
+- **Prepared Statements:** Veilige database queries
+- **Input Validatie:** Client-side en server-side validatie
+- **Error Handling:** Gebruiksvriendelijke foutmeldingen
+- **Responsive Design:** Werkt op alle apparaten
 
 ## Styling
 
