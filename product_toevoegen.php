@@ -76,9 +76,9 @@
     <!-- Navigatie -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="interface1/index.html">Maison van Dijk</a>
+            <a class="navbar-brand" href="index.html">Maison van Dijk</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="interface1/index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
                 <a class="nav-link" href="producten.php">Producten</a>
                 <a class="nav-link active" href="product_toevoegen.php">Product Toevoegen</a>
             </div>

@@ -6,15 +6,14 @@ Dit project bevat een complete PHP database applicatie voor het beheren van prod
 
 ```
 /workspaces/interface/
-├── database.sql                 # Database schema en voorbeeldgegevens
+├── index.html                  # Hoofdpagina van de website
+├── database.sql                # Database schema en voorbeeldgegevens
 ├── includes/
-│   └── database.php            # Database klasse en functies
-├── images/                     # Map voor productafbeeldingen
-├── producten.php              # Overzichtspagina van alle producten
-├── product_detail.php         # Detailpagina voor individuele producten
-├── product_toevoegen.php      # Formulier voor nieuwe producten
-└── interface1/
-    └── index.html             # Hoofdpagina van de website
+│   └── database.php           # Database klasse en functies
+├── images/                    # Map voor productafbeeldingen
+├── producten.php             # Overzichtspagina van alle producten
+├── product_detail.php        # Detailpagina voor individuele producten
+└── product_toevoegen.php     # Formulier voor nieuwe producten
 ```
 
 ## Database Setup
@@ -74,6 +73,7 @@ private $password = '';
 2. **Configureer** database verbinding in `includes/database.php`
 3. **Plaats afbeeldingen** in de `images/` map
 4. **Navigeer naar:**
+   - `index.html` - Hoofdpagina van de website
    - `producten.php` - Alle producten bekijken
    - `product_detail.php?id=X` - Product details
    - `product_toevoegen.php` - Nieuw product toevoegen
