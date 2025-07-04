@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS producten (
 
 -- Enkele voorbeeldgegevens toevoegen
 INSERT OR IGNORE INTO producten (naam, omschrijving, maat, afbeelding, prijs) VALUES
-('Milano Zakelijk Pak', 'Italiaanse wol, modern slim fit', 'l', 'milano_pak.jpg', 89900),
-('Venetië Ceremonie Pak', 'Fijne Engelse wol, met zijden accenten', 'm', 'venetie_pak.jpg', 129900),
-('Napoli Casual Pak', 'Wol-linnen mix, half gevoerd', 'xl', 'napoli_pak.jpg', 79900),
-('Classic Smoking', 'Traditionele smoking voor speciale gelegenheden', 'l', 'smoking.jpg', 149900),
-('Business Blazer', 'Elegante blazer voor kantoor', 's', 'blazer.jpg', 59900);
+('Milano Zakelijk Pak', 'Italiaanse wol, modern slim fit', 'l', 'milano_pak.png', 89900),
+('Venetië Ceremonie Pak', 'Fijne Engelse wol, met zijden accenten', 'm', 'venetie_pak.png', 129900),
+('Napoli Casual Pak', 'Wol-linnen mix, half gevoerd', 'xl', 'napoli_pak.png', 79900),
+('Classic Smoking', 'Traditionele smoking voor speciale gelegenheden', 'l', 'smoking.png', 149900),
+('Business Blazer', 'Elegante blazer voor kantoor', 's', 'blazer.png', 59900);

@@ -92,11 +92,20 @@
                                 <img src="images/<?= htmlspecialchars($item['afbeelding']) ?>" 
                                      class="product-image card-img-top" 
                                      alt="<?= htmlspecialchars($item['naam']) ?>"
-                                     onerror="this.src='https://via.placeholder.com/250x250?text=Geen+Afbeelding'">
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="product-image card-img-top d-none align-items-center justify-content-center bg-secondary text-white" style="height: 250px;">
+                                    <div class="text-center">
+                                        <i class="fas fa-image fa-2x mb-2"></i><br>
+                                        <small>Geen afbeelding</small>
+                                    </div>
+                                </div>
                             <?php else: ?>
-                                <img src="https://via.placeholder.com/250x250?text=Geen+Afbeelding" 
-                                     class="product-image card-img-top" 
-                                     alt="Geen afbeelding">
+                                <div class="product-image card-img-top d-flex align-items-center justify-content-center bg-secondary text-white" style="height: 250px;">
+                                    <div class="text-center">
+                                        <i class="fas fa-image fa-2x mb-2"></i><br>
+                                        <small>Geen afbeelding</small>
+                                    </div>
+                                </div>
                             <?php endif; ?>
                             
                             <div class="card-body d-flex flex-column">

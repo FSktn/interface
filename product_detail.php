@@ -106,11 +106,20 @@
                     <img src="images/<?= htmlspecialchars($item['afbeelding']) ?>" 
                          class="product-image" 
                          alt="<?= htmlspecialchars($item['naam']) ?>"
-                         onerror="this.src='https://via.placeholder.com/500x400?text=Geen+Afbeelding'">
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="product-image d-none align-items-center justify-content-center bg-secondary text-white" style="height: 500px;">
+                        <div class="text-center">
+                            <i class="fas fa-image fa-3x mb-3"></i><br>
+                            <span>Geen afbeelding beschikbaar</span>
+                        </div>
+                    </div>
                 <?php else: ?>
-                    <img src="https://via.placeholder.com/500x400?text=Geen+Afbeelding" 
-                         class="product-image" 
-                         alt="Geen afbeelding">
+                    <div class="product-image d-flex align-items-center justify-content-center bg-secondary text-white" style="height: 500px;">
+                        <div class="text-center">
+                            <i class="fas fa-image fa-3x mb-3"></i><br>
+                            <span>Geen afbeelding beschikbaar</span>
+                        </div>
+                    </div>
                 <?php endif; ?>
             </div>
             
